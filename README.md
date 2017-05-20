@@ -2,9 +2,10 @@
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [Linkki sovellukseeni](http://maot.users.cs.helsinki.fi/tsoha)
+* [Linkki dokumentaatiooni](https://github.com/jusmari/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+Työn aihe on ajokoulun teoriakokeen kaltainen sääntötietämyskoe Kumpulan opiskelijoiden yhteiselle Matlu-klusterille. 
+Ylläpitäjä lisää järjestelmään kysymyksiä, joihin vastataan monivalinnalla. Kokeen pääsee läpi, mikäli vastaa tarpeeksi moneen kohtaan oikein.
