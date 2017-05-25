@@ -1,7 +1,7 @@
 <?php
 
   $routes->get('/', function() {
-    UserController::login();
+    UsrController::login();
   });
 
 
@@ -22,4 +22,10 @@
 
   $routes->get('/organizations/:id', function($id) {
     OrganizatonController::show($id);
+  });
+
+
+  // USERS
+  $routes->get('/users', function() {
+    UsrController::list();
   });
