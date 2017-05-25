@@ -1,9 +1,17 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+    UserController::login();
   });
 
-  $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
+
+  // USERS
+  $routes->get('/questions', function() {
+    QuestionController::list();
+  });
+
+
+  // ORGANIZATIONS
+  $routes->get('/organizatons', function() {
+    OrganizatonController::list();
   });

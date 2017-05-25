@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rsync -h . maot@melkki.cs.helsinki.fi:~/tsoha/
+rsync -z -h -r . maot@melkki.cs.helsinki.fi:~/tsoha/
