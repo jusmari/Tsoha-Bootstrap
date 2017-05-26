@@ -8,3 +8,11 @@
   max-width: 1200px;
   margin: 0px auto;
 }
+
+.pull-left {
+  float: left !important;
+}
+
+.pull-right {
+  float: right !important;
+}

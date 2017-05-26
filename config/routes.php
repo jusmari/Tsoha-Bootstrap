@@ -16,12 +16,12 @@
 
 
   // ORGANIZATIONS
-  $routes->get('/organizatons', function() {
-    OrganizatonController::list();
+  $routes->get('/organizations', function() {
+    OrgController::list();
   });
 
   $routes->get('/organizations/:id', function($id) {
-    OrganizatonController::show($id);
+    OrgController::show($id);
   });
 
 
