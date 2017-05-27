@@ -1,3 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900);
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 #main-container{
   max-width: 1200px;
   padding: 10px 25px;
@@ -15,4 +21,36 @@
 
 .pull-right {
   float: right !important;
+}
+
+header {
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(assets/resources/pexels-photo-356079.jpeg);
+  background-size: cover;
+  height: 70vh;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+.front-header {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 3rem;
+  white-space: nowrap;
+}
+
+.frontLogin {
+  max-width: 50vh;
+  margin: 20px auto;
 }
