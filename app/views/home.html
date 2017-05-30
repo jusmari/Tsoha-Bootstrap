@@ -1,30 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
 
-  <header>
-    <div class="title">
-      <h1>Teoriakoe</h1>
-    </div>
-  </header>
+<div class="pull-left">
+  <h1>Teoriakoe</h1>
+</div>
 
-  <div class="frontLogin">
-      <h3>Kirjaudu sisään</h3>
-      <!-- Kaikki lomakkeen elementit form-tagin sisään -->
-      <form>
-        <!-- Tekstikenttä käyttäjätunnukselle -->
-        <div class="form-group">
-          <label>Käyttäjätunnus</label>
-          <input type="text" class="form-control">
-        </div>
 
-        <!-- Salasanakenttä salasanalle -->
-        <div class="form-group">
-          <label>Salasana</label>
-          <input type="password" class="form-control">
-        </div>
+<div class="pull-right">
+    <h3>Kirjaudu sisään</h3>
+    <!-- Kaikki lomakkeen elementit form-tagin sisään -->
+    <form>
+      <!-- Tekstikenttä käyttäjätunnukselle -->
+      <div class="form-group">
+        <label>Käyttäjätunnus</label>
+        <input type="text" class="form-control">
+      </div>
 
-        <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
-      </form>
-  </div>
+      <!-- Salasanakenttä salasanalle -->
+      <div class="form-group">
+        <label>Salasana</label>
+        <input type="password" class="form-control">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+    </form>
+</div>
 
 {% endblock %}

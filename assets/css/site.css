@@ -23,26 +23,6 @@ body {
   float: right !important;
 }
 
-header {
-  background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ),
-    url(assets/resources/pexels-photo-356079.jpeg);
-  background-size: cover;
-  height: 70vh;
-}
-
-.title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-}
-
 .front-header {
   text-transform: uppercase;
   margin: 0;

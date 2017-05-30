@@ -9,4 +9,8 @@
     public static function show($id) {
       View::make('organization/show.html');
     }
+
+    public static function edit($id) {
+      View::make('organization/edit.html');
+    }
   }
