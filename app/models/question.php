@@ -46,7 +46,9 @@
 
     public function save() {
       $query = DB::connection()->prepare('INSERT INTO Question (body, possibleAnswers, correctAnswer) VALUES (:body, :possibleAnswers, :correctAnswer) RETURNING id');
+      
       $query->execute(array('body' => $this->body, 'possibleAnswers' => $this->possibleAnswers, 'correctAnswer' => $this->$correctAnswer));
+
       $row = $query->fetch();
       $this->id = $row['id'];
     }

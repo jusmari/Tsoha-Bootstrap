@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Luo uusi kysymys</h1>
+
+  <form method="post" action="{{base_path}}/question">
+    <div class="form-group">
+      <label>Kysymys</label>
+      <input type="text" name="body" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Oikea vastaus</label>
+      <input type="text" name="correctAnswer" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Vastausvaihtoehdot</label>
+      <textarea name="possibleAnswers" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Lisää</button>
+    </div>
+  </form>
+{% endblock %}

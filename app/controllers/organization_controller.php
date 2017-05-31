@@ -13,4 +13,21 @@
     public static function edit($id) {
       View::make('organization/edit.html');
     }
+
+    public static function create() {
+      View::make('organization/new.html')
+    }
+
+    public static function store(){
+      $params = $_POST;
+
+      $ret = new Organization(array(
+        'id' => $row['id'],
+        'name' => $row['name']
+      ));
+
+      $ret->save();
+
+      Redirect::to('/organizations/' . $ret->id, array('message' => 'Uuden järjestön luonti onnistui!'));
+    }
   }

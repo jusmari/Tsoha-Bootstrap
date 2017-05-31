@@ -10,6 +10,14 @@
     QuestionController::list();
   });
 
+  $routes->get('/questions/new', function() {
+    QuestionController::create();
+  });
+
+  $routes->post('/questions', function() {
+    QuestionController::store();
+  });
+
   // ORGANIZATIONS
   $routes->get('/organizations', function() {
     OrgController::list();
@@ -23,6 +31,13 @@
     OrgController::edit($id);
   });
 
+  $routes->get('/organizations/new', function() {
+    OrgController::create();
+  });
+
+  $routes->post('/organization', function() {
+    OrgController::store();
+  });
 
   // USERS
   $routes->get('/users', function() {

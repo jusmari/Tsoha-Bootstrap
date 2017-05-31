@@ -15,7 +15,7 @@
       $orgs = array();
 
       foreach($rows as $row){
-        $orgs[] = new Usr(array(
+        $orgs[] = new Organization(array(
           'id' => $row['id'],
           'name' => $row['name']
         ));

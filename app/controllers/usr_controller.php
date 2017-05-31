@@ -21,4 +21,22 @@
     public static function edit($id) {
       View::make('usr/edit.html');
     }
+
+    public static function create() {
+      View::make('usr/new.html')
+    }
+
+    public static function store(){
+      $params = $_POST;
+
+      $ret = new Usr(array(
+        'id' => $row['id'],
+        'name' => $row['name'],
+        'password' => $row['password']
+      ));
+
+      $ret->save();
+
+      Redirect::to('/users/' . $ret->id, array('message' => 'Uuden käyttäjän luonti onnistui!'));
+    }
   }
