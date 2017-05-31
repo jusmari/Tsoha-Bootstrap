@@ -18,10 +18,17 @@
       View::make('question/new.html');
     }
 
+    public static function edit($id) {
+      $q = Question::find($id);
+
+      View::make('question/edit.html', array('q' => $q));
+    }
+
     public static function store(){
       $params = $_POST;
 
       $ret = new Question(array(
+        'name' => $params['name'],
         'body' => $params['body'],
         'correctAnswer' => $params['correctAnswer'],
         'possibleAnswers' => $params['possibleAnswers']

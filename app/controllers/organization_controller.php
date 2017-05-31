@@ -3,15 +3,22 @@
   class OrgController extends BaseController{
 
     public static function list() {
-      View::make('organization/list.html');
+      $orgs = Organization::all();
+
+      View::make('organization/list.html', array('orgs' => $orgs));
     }
 
     public static function show($id) {
-      View::make('organization/show.html');
+      $o = Organization::find($id);
+
+      View::make('organization/show.html', array('o' => $o));
     }
 
     public static function edit($id) {
-      View::make('organization/edit.html');
+      $o = Organization::find($id);
+
+
+      View::make('organization/edit.html', array('o' => $o));
     }
 
     public static function create() {
@@ -22,7 +29,6 @@
       $params = $_POST;
 
       $ret = new Organization(array(
-        'id' => $params['id'],
         'name' => $params['name']
       ));
 

@@ -40,7 +40,7 @@
     }
 
     public function save() {
-      $query = DB::connection()->prepare('INSERT INTO Usr (name) VALUES (:name) RETURNING id');
+      $query = DB::connection()->prepare('INSERT INTO Organization (name) VALUES (:name) RETURNING id');
       $query->execute(array('name' => $this->name));
       $row = $query->fetch();
       $this->id = $row['id'];

@@ -24,6 +24,10 @@
       return $answs;
     }
 
+    public static function getMembershipCount($org_id) {
+      
+    }
+
     public static function find($usr_id, $organization_id) {
       $query = DB::connection()->prepare('SELECT * FROM Membership WHERE usr_id = :u_id AND $organization_id = :o_id LIMIT 1');
       $query->execute(array('u_id' => $usr_id, 'o_id' => $organization_id));

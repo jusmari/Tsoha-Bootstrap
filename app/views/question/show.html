@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Kysymys {{q.id}}</h1>
+  <div class="alert alert-success">
+    {{message}}
+  </div>
+
+  <h1>{{q.name}}</h1>
   <!-- Painikkeet tähän -->
   <p>
-    <button class="btn btn-danger">Poista</button> <a href="{{basepath}}/questions/{{q.id}}/edit" class="btn btn-default">Muokkaa</a>
+    <button class="btn btn-danger">Poista</button> <a href="{{base_path}}/questions/{{q.id}}/edit" class="btn btn-default">Muokkaa</a>
   </p>
   <p>
     {{q.body}}

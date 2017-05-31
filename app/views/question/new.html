@@ -3,14 +3,15 @@
   <h1>Luo uusi kysymys</h1>
 
   <form method="post" action="{{base_path}}/questions">
+
     <div class="form-group">
-      <label>Kysymys</label>
-      <input type="text" name="body" class="form-control">
+      <label>Kysymyksen tunniste:</label>
+      <input type="text" name="correctAnswer" class="form-control" value="Esim. 'Kulunvalvonta 1'">
     </div>
 
     <div class="form-group">
-      <label>Oikea vastaus</label>
-      <input type="text" name="correctAnswer" class="form-control">
+      <label>Kysymys</label>
+      <input type="text" name="body" class="form-control">
     </div>
 
     <div class="form-group">

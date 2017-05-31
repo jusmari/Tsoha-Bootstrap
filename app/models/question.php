@@ -3,7 +3,7 @@
 
   class Question extends BaseModel{
 
-    public $id, $body, $correctAnswer, $possibleAnswers;
+    public $id, $body, $correctAnswer, $possibleAnswers, $name;
 
     public function __construct($attributes){
       parent::__construct($attributes);
@@ -18,6 +18,7 @@
       foreach($rows as $row){
         $questions[] = new Question(array(
           'id' => $row['id'],
+          'name' => $row['name'],
           'body' => $row['body'],
           'correctAnswer' => $row['correctanswer'],
           'possibleAnswers' => $row['possibleanswers']
@@ -35,6 +36,7 @@
       if ($row) {
         return new Question(array(
           'id' => $row['id'],
+          'name' => $row['name'],
           'body' => $row['body'],
           'possibleAnswers' => $row['possibleanswers'],
           'correctAnswer' => $row['correctanswer']

@@ -3,25 +3,26 @@
   <h1>Järjestölista</h1>
 
   <p>
-    <a href="#" class="btn btn-success">Lisää peli</a>
+    <a href="{{base_path}}/organizations/new" class="btn btn-success">Lisää järjestö --vain adminille</a>
   </p>
 
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
         <th>Nimi</th>
-        <th>Lisäyspäivä</th>
+        <th>Jäseniä</th>
         <th></th>
       </tr>
     </thead>
 
     <tbody>
-      <!-- Listataan pelit tähän -->
+      {% for o in orgs %}
       <tr>
-        <td><a href="#">Kysymys 1</a></td>
-        <td>9.12.2014</td>
+        <td><a href="{{base_path}}/organizations/{{o.id}}">{{o.name}}</a></td>
+        <td>Jäsenmäärä tähän</td>
         <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
       </tr>
+      {% endfor %}
     </tbody>
   </table>
 {% endblock %}

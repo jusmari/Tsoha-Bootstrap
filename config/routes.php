@@ -39,6 +39,10 @@
     OrgController::list();
   });
 
+  $routes->get('/organizations/new', function() {
+    OrgController::create();
+  });
+
   $routes->get('/organizations/:id', function($id) {
     OrgController::show($id);
   });
@@ -47,9 +51,6 @@
     OrgController::edit($id);
   });
 
-  $routes->get('/organizations/new', function() {
-    OrgController::create();
-  });
 
   $routes->post('/organization', function() {
     OrgController::store();

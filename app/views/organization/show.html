@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Järjestöt</h1>
-  <!-- Painikkeet tähän -->
+  <div class="alert alert-success">
+    {{message}}
+  </div>
+
+  <h1>{{o.name}}</h1>
+
+  <h4>Jäseniä: </h4>
+
   <p>
     <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
   </p>
-  <!-- Tiedot tulee listana tähän -->
-  <ul>
-    <li><strong>Nimi:</strong> testi </li>
-    <li><strong>Status:</strong> <label class="label label-danger">kesken</label></li>
-    <li><strong>Lisäyspäivä:</strong> 9.12.2014</li>
-  </ul>
-  <!-- Kuvaus tulee tähän -->
 {% endblock %}

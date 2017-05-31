@@ -10,6 +10,7 @@ CREATE TABLE Usr(
 
 CREATE TABLE Question(
   id SERIAL PRIMARY KEY,
+  name varchar(50) NOT NULL,
   body varchar(140) NOT NULL,
   correctAnswer varchar(140) NOT NULL,
   possibleAnswers varchar(200) NOT NULL
