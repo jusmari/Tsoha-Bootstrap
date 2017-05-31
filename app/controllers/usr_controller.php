@@ -11,11 +11,15 @@
     }
 
     public static function list() {
-      View::make('usr/list.html');
+      $u = Usr::all();
+
+      View::make('usr/list.html', array('users' => $u));
     }
 
     public static function show($id) {
-      View::make('usr/show.html');
+      $u = Usr::find($id);
+
+      View::make('usr/show.html', array('user' => $u));
     }
 
     public static function edit($id) {
@@ -23,16 +27,16 @@
     }
 
     public static function create() {
-      View::make('usr/new.html')
+      View::make('usr/new.html');
     }
 
     public static function store(){
       $params = $_POST;
 
       $ret = new Usr(array(
-        'id' => $row['id'],
-        'name' => $row['name'],
-        'password' => $row['password']
+        'name' => $params['name'],
+        'password' => $params['password'],
+        'admin' => "false"
       ));
 
       $ret->save();

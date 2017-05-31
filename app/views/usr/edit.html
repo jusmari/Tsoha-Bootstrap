@@ -1,30 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Muokkaa </h1>
+  <h1>Muokkaa tietojasi</h1>
 
-  <form>
+  <form method="post" action="{{base_path}}/users/edit">
     <div class="checkbox">
       <label>
         <input type="checkbox">
-        Admin
+        Admin -- tulee näkymään vain admineille.
       </label>
     </div>
+
     <div class="form-group">
       <label>Nimi</label>
-      <input type="text" class="form-control" value="Käyttäjän nimi">
+      <input type="text" class="form-control" value="{{user.name}}">
     </div>
+
     <div class="form-group">
-      <label>Luontipäivä</label>
-      <input type="text" class="form-control" value="11.11.2011">
-    </div>
-    <div class="form-group">
-      <label>Vaihda salasana</label>
+      <label>Uusi salasana</label>
       <input type="text" class="form-control">
     </div>
+
     <div class="form-group">
       <label>Salasana uudelleen</label>
       <input type="text" class="form-control">
     </div>
+
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Tallenna</button>
     </div>

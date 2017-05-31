@@ -3,27 +3,26 @@
   <h1>Kysymyslista</h1>
 
   <p>
-    <a href="#" class="btn btn-success">Lisää kysymys</a>
+    <a href="{{base_path}}/questions/new" class="btn btn-success">Lisää kysymys</a>
   </p>
 
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
-        <th>Nimi</th>
-        <th>Lisäyspäivä</th>
+        <th>Nro</th>
         <th>Kysymys</th>
         <th></th>
       </tr>
     </thead>
 
     <tbody>
-      <!-- Listataan pelit tähän -->
+      {% for q in questions %}
       <tr>
-        <td><a href="#">Kysymys 1</a></td>
-        <td>9.12.2014</td>
-        <td>Tässä on kysymys</td>
-        <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
+        <td><a href="{{base_path}}/questions/{{q.id}}">Kysymys {{q.id}}</a></td>
+        <td>{{q.body}}</td>
+        <td><a class="btn btn-default btn-sm" href="{{base_path}}/questions/{{q.id}}/edit">Muokkaa</a></td>
       </tr>
+      {% endfor %}
     </tbody>
   </table>
 {% endblock %}

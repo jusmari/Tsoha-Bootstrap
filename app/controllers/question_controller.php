@@ -3,25 +3,28 @@
   class QuestionController extends BaseController{
 
     public static function list() {
-      View::make('question/list.html');
+      $ret = Question::all();
+
+      View::make('question/list.html', array('questions' => $ret));
     }
 
     public static function show($id) {
-      View::make('question/show.html');
+      $q = Question::find($id);
+
+      View::make('question/show.html', array('q' => $q));
     }
 
     public static function create() {
-      View::make('question/new.html')
+      View::make('question/new.html');
     }
 
     public static function store(){
       $params = $_POST;
 
       $ret = new Question(array(
-        'id' => $row['id'],
-        'body' => $row['body'],
-        'correctAnswer' => $row['correctAnswer'],
-        'possibleAnswers' => $row['possibleAnswers']
+        'body' => $params['body'],
+        'correctAnswer' => $params['correctAnswer'],
+        'possibleAnswers' => $params['possibleAnswers']
       ));
 
       $ret->save();

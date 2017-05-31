@@ -25,7 +25,7 @@ CREATE TABLE Membership(
   usr_id INTEGER REFERENCES Usr(id)
 );
 
-CREATE TABLE Answers(
+CREATE TABLE Answer(
   usr_id INTEGER REFERENCES Usr(id),
   question_id INTEGER REFERENCES Question(id),
   correct boolean NOT NULL

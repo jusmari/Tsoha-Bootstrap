@@ -10,6 +10,7 @@
     QuestionController::list();
   });
 
+
   $routes->get('/questions/new', function() {
     QuestionController::create();
   });
@@ -17,6 +18,21 @@
   $routes->post('/questions', function() {
     QuestionController::store();
   });
+
+  $routes->get('/questions/:id', function($id) {
+    QuestionController::show($id);
+  });
+
+  $routes->get('/questions/:id/edit', function($id) {
+    QuestionController::edit($id);
+  });
+
+
+
+
+
+
+
 
   // ORGANIZATIONS
   $routes->get('/organizations', function() {
@@ -39,9 +55,20 @@
     OrgController::store();
   });
 
+
+
+
+
+
+
+
   // USERS
   $routes->get('/users', function() {
     UsrController::list();
+  });
+
+  $routes->get('/users/new', function() {
+    UsrController::create();
   });
 
   $routes->get('/users/:id', function($id) {
@@ -50,4 +77,8 @@
 
   $routes->get('/users/:id/edit', function($id) {
     UsrController::edit($id);
+  });
+
+  $routes->post('/users', function() {
+    UsrController::store();
   });

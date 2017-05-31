@@ -15,15 +15,15 @@
     }
 
     public static function create() {
-      View::make('organization/new.html')
+      View::make('organization/new.html');
     }
 
     public static function store(){
       $params = $_POST;
 
       $ret = new Organization(array(
-        'id' => $row['id'],
-        'name' => $row['name']
+        'id' => $params['id'],
+        'name' => $params['name']
       ));
 
       $ret->save();

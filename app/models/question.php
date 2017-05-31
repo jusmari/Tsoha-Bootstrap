@@ -19,8 +19,8 @@
         $questions[] = new Question(array(
           'id' => $row['id'],
           'body' => $row['body'],
-          'correctAnswer' => $row['correctAnswer'],
-          'possibleAnswers' => $row['possibleAnswers']
+          'correctAnswer' => $row['correctanswer'],
+          'possibleAnswers' => $row['possibleanswers']
         ));
       }
 
@@ -36,8 +36,8 @@
         return new Question(array(
           'id' => $row['id'],
           'body' => $row['body'],
-          'possibleAnswers' => $row['possibleAnswers'],
-          'correctAnswer' => $row['correctAnswer']
+          'possibleAnswers' => $row['possibleanswers'],
+          'correctAnswer' => $row['correctanswer']
         ));
       }
 
@@ -45,9 +45,9 @@
     }
 
     public function save() {
-      $query = DB::connection()->prepare('INSERT INTO Question (body, possibleAnswers, correctAnswer) VALUES (:body, :possibleAnswers, :correctAnswer) RETURNING id');
-      
-      $query->execute(array('body' => $this->body, 'possibleAnswers' => $this->possibleAnswers, 'correctAnswer' => $this->$correctAnswer));
+      $query = DB::connection()->prepare('INSERT INTO Question (body, possibleanswers, correctanswer) VALUES (:body, :possibleanswers, :correctanswer) RETURNING id');
+
+      $query->execute(array('body' => $this->body, 'possibleanswers' => $this->possibleAnswers, 'correctanswer' => $this->correctAnswer));
 
       $row = $query->fetch();
       $this->id = $row['id'];

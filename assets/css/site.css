@@ -34,3 +34,7 @@ body {
   max-width: 50vh;
   margin: 20px auto;
 }
+
+form {
+  max-width: 600px;
+}
