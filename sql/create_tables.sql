@@ -4,7 +4,8 @@
 CREATE TABLE Usr(
   id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
-  password varchar(50) NOT NULL
+  password varchar(50) NOT NULL,
+  admin boolean NOT NULL
 );
 
 CREATE TABLE Question(
@@ -26,5 +27,6 @@ CREATE TABLE Membership(
 
 CREATE TABLE Answers(
   usr_id INTEGER REFERENCES Usr(id),
-  question_id INTEGER REFERENCES Question(id)
+  question_id INTEGER REFERENCES Question(id),
+  correct boolean NOT NULL
 );
