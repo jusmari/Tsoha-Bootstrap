@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-  <div class="alert alert-success">
-    {{message}}
-  </div>
+  {% if (message) %}
+    <div class="alert alert-success">
+      {{message}}
+    </div>
+  {% endif %}
 
   <h1>{{o.name}}</h1>
 
-  <h4>Jäseniä: </h4>
+  <h4>Jäseniä: {{m}}</h4>
 
   <p>
     <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>

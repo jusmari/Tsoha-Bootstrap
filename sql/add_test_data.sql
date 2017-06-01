@@ -10,3 +10,11 @@ INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('toine
 
 INSERT INTO Organization (name) VALUES ('Testisad');
 INSERT INTO Organization (name) VALUES ('asnkdkasndk');
+
+INSERT INTO Membership (organization_id, usr_id) VALUES (1, 1);
+INSERT INTO Membership (organization_id, usr_id) VALUES (1, 2);
+INSERT INTO Membership (organization_id, usr_id) VALUES (2, 2);
+
+INSERT INTO Answer (usr_id, question_id, correct) VALUES (1, 1, true);
+INSERT INTO Answer (usr_id, question_id, correct) VALUES (1, 2, false);
+INSERT INTO Answer (usr_id, question_id, correct) VALUES (2, 2, true);

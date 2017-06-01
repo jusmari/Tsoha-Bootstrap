@@ -4,19 +4,20 @@
 
     public static function list() {
       $orgs = Organization::all();
+      $members = Membership::getAllOrgsMemberCount();
 
-      View::make('organization/list.html', array('orgs' => $orgs));
+      View::make('organization/list.html', array('orgs' => $orgs, 'members' => $members));
     }
 
     public static function show($id) {
       $o = Organization::find($id);
+      $m = Membership::getOrgMemberCount($id);
 
-      View::make('organization/show.html', array('o' => $o));
+      View::make('organization/show.html', array('o' => $o, 'm' => $m));
     }
 
     public static function edit($id) {
       $o = Organization::find($id);
-
 
       View::make('organization/edit.html', array('o' => $o));
     }

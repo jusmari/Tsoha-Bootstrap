@@ -24,12 +24,8 @@
       return $answs;
     }
 
-    public static function getMembershipCount($org_id) {
-      
-    }
-
     public static function find($usr_id, $organization_id) {
-      $query = DB::connection()->prepare('SELECT * FROM Membership WHERE usr_id = :u_id AND $organization_id = :o_id LIMIT 1');
+      $query = DB::connection()->prepare('SELECT * FROM Membership WHERE usr_id = :u_id AND organization_id = :o_id LIMIT 1');
       $query->execute(array('u_id' => $usr_id, 'o_id' => $organization_id));
       $row = $query->fetch();
 
@@ -38,6 +34,31 @@
           'organization_id' => $row['organization_id'],
           'usr_id' => $row['usr_id']
         ));
+      }
+
+      return null;
+    }
+
+    public static function getAllOrgsMemberCount() {
+      $query = DB::connection()->prepare('SELECT organization_id AS org, count(usr_id) AS members FROM membership GROUP BY org;');
+      $query->execute();
+      $rows = $query->fetchAll();
+      $ret = array();
+
+      foreach($rows as $row){
+        $ret[$row['org']] = $row['members'];
+      }
+
+      return $ret;
+    }
+
+    public static function getOrgMemberCount($org_id) {
+      $query = DB::connection()->prepare('SELECT count(usr_id) AS members FROM membership WHERE organization_id = :id LIMIT 1;');
+      $query->execute(array('id' => $org_id));
+      $row = $query->fetch();
+
+      if ($row) {
+        return $row[0];
       }
 
       return null;

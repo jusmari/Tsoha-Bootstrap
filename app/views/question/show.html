@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-  <div class="alert alert-success">
-    {{message}}
-  </div>
+  {% if (message) %}
+    <div class="alert alert-success">
+      {{message}}
+    </div>
+  {% endif %}
 
   <h1>{{q.name}}</h1>
   <!-- Painikkeet tähän -->

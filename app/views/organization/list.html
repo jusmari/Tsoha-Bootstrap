@@ -19,7 +19,7 @@
       {% for o in orgs %}
       <tr>
         <td><a href="{{base_path}}/organizations/{{o.id}}">{{o.name}}</a></td>
-        <td>Jäsenmäärä tähän</td>
+        <td>{{members[o.id]}}</td>
         <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
       </tr>
       {% endfor %}
