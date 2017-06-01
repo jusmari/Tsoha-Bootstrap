@@ -8,6 +8,12 @@
 
   <h1>{{user.name}}</h1>
 
+  <h5>Jäsenyydet:</h5>
+
+  {% for m in ms %}
+    <p>{{m}}</p>
+  {% endfor %}
+
   <p>
     <button class="btn btn-danger">Poista</button> <a href="{{base_path}}/users/{{user.id}}/edit" class="btn btn-default">Muokkaa</a>
   </p>

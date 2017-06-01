@@ -8,8 +8,8 @@ INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('testi
 INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('toinenTestikysymys', 'kikkeliskokkelis???', 'kyllä', 'kyllä;ei');
 
 
-INSERT INTO Organization (name) VALUES ('Testisad');
-INSERT INTO Organization (name) VALUES ('asnkdkasndk');
+INSERT INTO Organization (name) VALUES ('Matlu');
+INSERT INTO Organization (name) VALUES ('Tekis');
 
 INSERT INTO Membership (organization_id, usr_id) VALUES (1, 1);
 INSERT INTO Membership (organization_id, usr_id) VALUES (1, 2);

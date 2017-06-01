@@ -18,8 +18,9 @@
 
     public static function show($id) {
       $u = Usr::find($id);
+      $ms = Membership::getAllUserMembershipOrganizations($id);
 
-      View::make('usr/show.html', array('user' => $u));
+      View::make('usr/show.html', array('user' => $u, 'ms' => $ms));
     }
 
     public static function edit($id) {
@@ -27,20 +28,44 @@
     }
 
     public static function create() {
-      View::make('usr/new.html');
+      $orgs = Organization::all();
+
+      View::make('usr/new.html', array('orgs' => $orgs));
+    }
+
+    private static function createMemberships($params, $u_id) {
+      $membership = new Membership(array(
+        'usr_id' => $u_id,
+        'organization_id' => $params['org']
+      ));
+
+      $membership->save();
+
+      if ($params['org2'] != "null") {
+        $membership2 = new Membership(array(
+          'usr_id' => $u_id,
+          'organization_id' => $params['org2']
+        ));
+
+        $membership2->save();
+      }
     }
 
     public static function store(){
       $params = $_POST;
 
-      $ret = new Usr(array(
+      $usr = new Usr(array(
         'name' => $params['name'],
         'password' => $params['password'],
         'admin' => "false"
       ));
 
-      $ret->save();
+      $usr->save();
 
-      Redirect::to('/users/' . $ret->id, array('message' => 'Uuden käyttäjän luonti onnistui!'));
+      self::createMemberships($params, $usr->id);
+
+      Redirect::to('/users/' . $usr->id, array('message' => 'Uuden käyttäjän luonti onnistui!'));
     }
+
+
   }

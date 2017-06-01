@@ -5,17 +5,36 @@
   <form method="post" action="{{base_path}}/users">
     <div class="form-group">
       <label>Nimi</label>
-      <input type="text" name="name" class="form-control">
+      <input type="text" name="name" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label>Valitse järjestö:</label>
+      <select name="org" class="form-control" required>
+        {% for o in orgs %}
+        <option value="{{o.id}}">{{o.name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Valitse 2. järjestö (valinnainen):</label>
+      <select name="org2" class="form-control">
+        <option value="null"></option>
+        {% for o in orgs %}
+        <option value="{{o.id}}">{{o.name}}</option>
+        {% endfor %}
+      </select>
     </div>
 
     <div class="form-group">
       <label>Salasana</label>
-      <input type="password" name="password" class="form-control"></input>
+      <input type="password" name="password" class="form-control" required></input>
     </div>
 
     <div class="form-group">
       <label>Salasana uudestaan</label>
-      <input type="password" name="passwordConfirmation" class="form-control"></input>
+      <input type="password" name="passwordConfirmation" class="form-control" required></input>
     </div>
 
     <div class="form-group">

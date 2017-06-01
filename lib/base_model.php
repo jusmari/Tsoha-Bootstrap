@@ -37,7 +37,7 @@
       $errors = array();
 
       if($string == '' || $string == NULL){
-          $errors[] = "Tyhjä syöte"
+          $errors[] = "Tyhjä syöte";
       }
 
       return $errors;

@@ -39,6 +39,19 @@
       return null;
     }
 
+    public static function getAllUserMembershipOrganizations($usr_id) {
+      $query = DB::connection()->prepare('SELECT name FROM organization AS org, membership AS mem WHERE org.id = mem.organization_id AND mem.usr_id = :id;');
+      $query->execute(array('id' => $usr_id));
+      $rows = $query->fetchAll();
+      $ret = array();
+
+      foreach($rows as $row){
+        $ret[] = $row['name'] ;
+      }
+
+      return $ret;
+    }
+
     public static function getAllOrgsMemberCount() {
       $query = DB::connection()->prepare('SELECT organization_id AS org, count(usr_id) AS members FROM membership GROUP BY org;');
       $query->execute();
@@ -65,9 +78,8 @@
     }
 
     public function save() {
-      $query = DB::connection()->prepare('INSERT INTO Membership (usr_id, organization_id) VALUES (:usr_id, :question_id) RETURNING id');
+      $query = DB::connection()->prepare('INSERT INTO Membership (usr_id, organization_id) VALUES (:usr_id, :organization_id);');
       $query->execute(array('usr_id' => $this->usr_id, 'organization_id' => $this->organization_id));
       $row = $query->fetch();
-      $this->id = $row['id'];
     }
   }
