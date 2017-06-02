@@ -4,7 +4,38 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-#main-container{
+.main-container .frontPage {
+  background:
+  linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ),
+  url(kekek.jpeg) no-repeat center center;
+  background-size: cover;
+  height: 95vh;
+  width: 100vw;
+  position: absolute;
+  top: 5vh;
+  left: 0vw;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+.title h1 {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 6rem;
+  white-space: nowrap;
+}
+
+.main-container{
   max-width: 1200px;
   padding: 10px 25px;
   margin: 0px auto;
@@ -15,12 +46,13 @@ body {
   margin: 0px auto;
 }
 
-.pull-left {
-  float: left !important;
-}
-
 .pull-right {
-  float: right !important;
+  position: absolute;
+  top: 15vh;
+  right: 15vw;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 10px;
+  color: white;
 }
 
 .front-header {
