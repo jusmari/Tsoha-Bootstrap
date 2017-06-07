@@ -94,8 +94,14 @@
       $query = DB::connection()->prepare('SELECT * FROM Usr WHERE name = :name AND password = :password LIMIT 1');
       $query->execute(array('name' => $name, 'password' => $pw));
       $row = $query->fetch();
+
       if($row){
-        return $row[0];
+        return new Usr(array(
+          'id' => $row['id'],
+          'name' => $row['name'],
+          'password' => $row['password'],
+          'admin' => $row['admin']
+        ));
       }else{
         return null;
       }

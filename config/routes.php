@@ -1,5 +1,14 @@
 <?php
 
+
+  function check_logged_in(){
+    BaseController::check_logged_in();
+  }
+
+  function check_admin() {
+    BaseController::check_user_admin();
+  }
+
   $routes->get('/', function() {
     UsrController::index();
   });
@@ -8,9 +17,18 @@
     UsrController::handle_login();
   });
 
-  $routes->get('/lobby', function() {
-
+  $routes->get('/login', function() {
+    UsrController::login();
   });
+
+  $routes->post('/logout', function() {
+    UsrController::logout();
+  });
+
+  $routes->get('/lobby', 'check_logged_in', function() {
+    UsrController::lobby();
+  });
+
 
 
   // QUESTIONS
@@ -18,11 +36,11 @@
     QuestionController::list();
   });
 
-  $routes->get('/questions/new', function() {
+  $routes->get('/questions/new', 'check_admin', function() {
     QuestionController::create();
   });
 
-  $routes->post('/questions', function() {
+  $routes->post('/questions', 'check_admin', function() {
     QuestionController::store();
   });
 
@@ -30,15 +48,15 @@
     QuestionController::show($id);
   });
 
-  $routes->get('/questions/:id/edit', function($id) {
+  $routes->get('/questions/:id/edit', 'check_admin', function($id) {
     QuestionController::edit($id);
   });
 
-  $routes->post('/questions/:id/edit', function($id) {
+  $routes->post('/questions/:id/edit', 'check_admin', function($id) {
     QuestionController::update($id);
   });
 
-  $routes->post('/questions/:id/destroy', function($id) {
+  $routes->post('/questions/:id/destroy', 'check_admin', function($id) {
     QuestionController::destroy($id);
   });
 
@@ -51,7 +69,7 @@
     OrgController::list();
   });
 
-  $routes->get('/organizations/new', function() {
+  $routes->get('/organizations/new', 'check_admin', function() {
     OrgController::create();
   });
 
@@ -59,12 +77,11 @@
     OrgController::show($id);
   });
 
-  $routes->get('/organizations/:id/edit', function($id) {
+  $routes->get('/organizations/:id/edit', 'check_admin', function($id) {
     OrgController::edit($id);
   });
 
-
-  $routes->post('/organization', function() {
+  $routes->post('/organization', 'check_admin', function() {
     OrgController::store();
   });
 
@@ -76,7 +93,7 @@
 
 
   // USERS
-  $routes->get('/users', function() {
+  $routes->get('/users', 'check_admin', function() {
     UsrController::list();
   });
 

@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-  <div class="pull-right">
+{% if error %}
+<div class="alert alert-danger">
+    <strong>{{error}}</strong>
+</div>
+{% endif %}
+
+  <div>
       <h3>Kirjaudu sisään</h3>
       <!-- Kaikki lomakkeen elementit form-tagin sisään -->
       <form>
