@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if errors %}
+<div class="alert alert-danger">
+  <ul>
+    {% for error in errors %}
+      <li>{{error}}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
 <div class="frontPage">
 
   <div class="title">
@@ -11,17 +21,17 @@
   <div class="pull-right">
       <h3>Kirjaudu sisään</h3>
       <!-- Kaikki lomakkeen elementit form-tagin sisään -->
-      <form>
+      <form action="{{base_path}}/login" method="post">
         <!-- Tekstikenttä käyttäjätunnukselle -->
         <div class="form-group">
           <label>Käyttäjätunnus</label>
-          <input type="text" class="form-control">
+          <input type="text" name="username" value="{{user.username}}" class="form-control">
         </div>
 
         <!-- Salasanakenttä salasanalle -->
         <div class="form-group">
           <label>Salasana</label>
-          <input type="password" class="form-control">
+          <input type="password" name="password" class="form-control">
         </div>
 
         <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>

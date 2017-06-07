@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
+{% if (message) %}
+  <div class="alert alert-success">
+    {{message}}
+  </div>
+{% endif %}
+
   <h1>Käyttäjälista</h1>
 
   <p>
@@ -18,7 +24,12 @@
       {% for u in users %}
       <tr>
         <td><a href="{{base_path}}/users/{{u.id}}">{{u.name}}</a></td>
-        <th><a class="btn btn-default btn-sm" href="{{base_path}}/users/{{u.id}}/edit">Muokkaa</a></th>
+        <th>
+          <a class="btn btn-default btn-sm" href="{{base_path}}/users/{{u.id}}/edit">Muokkaa</a>
+          <form method="post" action="{{base_path}}/users/{{u.id}}/destroy" style="display: inline-block;">
+            <button type="submit" class="btn btn-danger">Poista</button>
+          </form>
+        </th>
       </tr>
       {% endfor %}
     </tbody>

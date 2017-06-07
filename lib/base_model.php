@@ -15,39 +15,34 @@
       }
     }
 
-    public function validateStringLength($string, $minl, $maxl) {
-      $errors = array();
-
-      if($string == '' || $string == NULL){
-          $errors[] = "Merkkijonon pituus tulee olla välillä " . $minl . ".." . $maxl;
+    public function validateStringLengthMoreThan($string, $l) {
+      if (strlen($string) > $l) {
+        return FALSE;
       }
 
-      if(!strlen($string) <= $maxl) {
-          $errors[] = "Merkkijonon pituus tulee olla välillä " . $minl . ".." . $maxl;
+      return TRUE;
+    }
+
+    public function validateStringLengthLessThan($string, $l) {
+      if(strlen($string) < $l) {
+          return FALSE;
       }
 
-      if (!strlen($string) >= $minl) {
-        $errors[] = "Merkkijonon pituus tulee olla välillä " . $minl . ".." . $maxl;
-      }
-
-      return $errors;
+      return TRUE;
     }
 
     public function validateNotEmpty($string) {
-      $errors = array();
-
       if($string == '' || $string == NULL){
-          $errors[] = "Tyhjä syöte";
+        return TRUE;
       }
 
-      return $errors;
+      return FALSE;
     }
 
     public function errors(){
       // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
       $errors = array();
       foreach($this->validators as $validator){
-          $valArr = array();
           $valArr = $this->{$validator}();
           $errors = array_merge($errors, $valArr);
       }

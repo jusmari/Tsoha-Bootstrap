@@ -5,7 +5,7 @@ CREATE TABLE Usr(
   id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
   password varchar(50) NOT NULL,
-  admin boolean NOT NULL
+  admin boolean DEFAULT false
 );
 
 CREATE TABLE Question(

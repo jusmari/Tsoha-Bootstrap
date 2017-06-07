@@ -77,9 +77,13 @@
       return null;
     }
 
+    public static function deleteMembershipsFromUser($id) {
+      $query = DB::connection()->prepare('DELETE FROM Membership WHERE usr_id = :id');
+      $query->execute(array('id' => $id));
+    }
+
     public function save() {
       $query = DB::connection()->prepare('INSERT INTO Membership (usr_id, organization_id) VALUES (:usr_id, :organization_id);');
       $query->execute(array('usr_id' => $this->usr_id, 'organization_id' => $this->organization_id));
-      $row = $query->fetch();
     }
   }

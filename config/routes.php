@@ -4,12 +4,19 @@
     UsrController::index();
   });
 
+  $routes->post('/login', function() {
+    UsrController::handle_login();
+  });
+
+  $routes->get('/lobby', function() {
+
+  });
+
 
   // QUESTIONS
   $routes->get('/questions', function() {
     QuestionController::list();
   });
-
 
   $routes->get('/questions/new', function() {
     QuestionController::create();
@@ -27,8 +34,13 @@
     QuestionController::edit($id);
   });
 
+  $routes->post('/questions/:id/edit', function($id) {
+    QuestionController::update($id);
+  });
 
-
+  $routes->post('/questions/:id/destroy', function($id) {
+    QuestionController::destroy($id);
+  });
 
 
 
@@ -82,4 +94,12 @@
 
   $routes->post('/users', function() {
     UsrController::store();
+  });
+
+  $routes->post('/users/:id/edit', function($id) {
+    UsrController::update($id);
+  });
+
+  $routes->post('/users/:id/destroy', function($id) {
+    UsrController::destroy($id);
   });

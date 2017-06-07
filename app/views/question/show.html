@@ -7,11 +7,22 @@
   {% endif %}
 
   <h1>{{q.name}}</h1>
-  <!-- Painikkeet tähän -->
+
+  <strong>Kysymys:</strong>
+  <p>{{q.body}}</p>
+
+  <strong>Oikea vastaus:</strong>
+  <p>{{q.correctAnswer}}</p>
+
+  <strong>vastausvaihtoehdot:</strong>
+  <p>{{q.possibleAnswers}}</p>
+
+
+  <form method="post" action="{{base_path}}/questions/{{q.id}}/destroy" style="display: inline-block;">
+    <button type="submit" class="btn btn-danger">Poista</button>
+  </form>
+
   <p>
-    <button class="btn btn-danger">Poista</button> <a href="{{base_path}}/questions/{{q.id}}/edit" class="btn btn-default">Muokkaa</a>
-  </p>
-  <p>
-    {{q.body}}
+    <a href="{{base_path}}/questions/{{q.id}}/edit" class="btn btn-default">Muokkaa</a>
   </p>
 {% endblock %}

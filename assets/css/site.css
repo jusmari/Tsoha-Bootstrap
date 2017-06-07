@@ -4,13 +4,13 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-.main-container .frontPage {
+.frontPage {
   background:
   linear-gradient(
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.5)
   ),
-  url(kekek.jpeg) no-repeat center center;
+  url("https://static.pexels.com/photos/159353/survey-opinion-research-voting-fill-159353.jpeg") no-repeat center center;
   background-size: cover;
   height: 95vh;
   width: 100vw;
@@ -46,11 +46,11 @@ body {
   margin: 0px auto;
 }
 
-.pull-right {
+.pull-right{
   position: absolute;
   top: 15vh;
   right: 15vw;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   padding: 10px 10px;
   color: white;
 }
@@ -60,11 +60,6 @@ body {
   margin: 0;
   font-size: 3rem;
   white-space: nowrap;
-}
-
-.frontLogin {
-  max-width: 50vh;
-  margin: 20px auto;
 }
 
 form {

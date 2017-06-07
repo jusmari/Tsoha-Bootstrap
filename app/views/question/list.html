@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
+{% if (message) %}
+  <div class="alert alert-success">
+    {{message}}
+  </div>
+{% endif %}
+
   <h1>Kysymyslista</h1>
 
   <p>
@@ -20,7 +26,12 @@
       <tr>
         <td><a href="{{base_path}}/questions/{{q.id}}">{{q.name}}</a></td>
         <td>{{q.body}}</td>
-        <td><a class="btn btn-default btn-sm" href="{{base_path}}/questions/{{q.id}}/edit">Muokkaa</a></td>
+        <td>
+          <a class="btn btn-default btn-sm" href="{{base_path}}/questions/{{q.id}}/edit">Muokkaa</a>
+          <form method="post" action="{{base_path}}/questions/{{q.id}}/destroy" style="display: inline-block;">
+            <button type="submit" class="btn btn-danger">Poista</button>
+          </form>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
