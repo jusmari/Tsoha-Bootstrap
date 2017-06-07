@@ -2,9 +2,11 @@
 {% block content %}
   <h1>Järjestölista</h1>
 
+  {% if user_logged_in.admin == TRUE %}
   <p>
     <a href="{{base_path}}/organizations/new" class="btn btn-success">Lisää järjestö --vain adminille</a>
   </p>
+  {% endif %}
 
   <table class="table table-striped table-bordered">
     <thead>
@@ -20,7 +22,7 @@
       <tr>
         <td><a href="{{base_path}}/organizations/{{o.id}}">{{o.name}}</a></td>
         <td>{{members[o.id]}}</td>
-        <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
+        <th><a class="btn btn-default btn-sm" href="{{base_path}}/organizations/{{o.id}}">Muokkaa</a></th>
       </tr>
       {% endfor %}
     </tbody>

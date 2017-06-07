@@ -37,4 +37,25 @@
 
       Redirect::to('/organizations/' . $ret->id, array('message' => 'Uuden järjestön luonti onnistui!'));
     }
+
+    public static function update($id) {
+      $params = $_POST;
+
+      $atrs = array(
+        'id' => $id,
+        'name' => $params['name']
+      );
+
+      $o = new Organization($atrs);
+      $o->update();
+
+      Redirect::to('/organizations' . $id, array('message' => "Järjestön muokkaaminen onnistunut!"));
+    }
+
+    public static function destroy($id) {
+      $q = new Organization(array('id' => $id));
+      $q->destroy();
+
+      Redirect::to('/organizations', array('message' => "Järjestön poisto onnistunut!"));
+    }
   }

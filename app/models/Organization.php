@@ -45,4 +45,14 @@
       $row = $query->fetch();
       $this->id = $row['id'];
     }
+
+    public function update() {
+      $query = DB::connection()->prepare('UPDATE Organization SET name = :name WHERE id = :id;');
+      $query->execute(array('name' => $this->name, 'id' => $id));
+    }
+
+    public function destroy() {
+      $query = DB::connection()->prepare('DELETE FROM Organization WHERE id = :id;');
+      $query->execute(array('id' => $id));
+    }
   }

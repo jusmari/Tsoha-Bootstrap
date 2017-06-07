@@ -9,7 +9,6 @@
     }
 
     public static function lobby() {
-      Kint::dump('user_logged_in');
       View::make('lobby.html');
     }
 
@@ -99,8 +98,6 @@
     public static function update($id) {
       $params = $_POST;
 
-      Kint::dump($params);
-
       $attrs = array(
         'id' => $id,
         'name' => $params['name'],
@@ -127,7 +124,6 @@
     }
 
     public static function destroy($id) {
-      $params = $_POST;
       $q = new Usr(array('id' => $id));
       $q->destroy($id);
 
