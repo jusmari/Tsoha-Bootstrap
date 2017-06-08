@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
+
   <h1>Muokkaa</h1>
 
-  <form>
+  <form action="{{base_path}}/organizations/{{o.id}}/edit" method="post">
     <div class="form-group">
       <label>Nimi</label>
-      <input type="text" class="form-control" value="{{o.name}}">
+      <input type="text" name="name" class="form-control" value="{{o.name}}">
     </div>
 
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Tallenna</button>
     </div>
   </form>
+
 {% endblock %}

@@ -44,7 +44,7 @@
     QuestionController::store();
   });
 
-  $routes->get('/questions/:id', function($id) {
+  $routes->get('/questions/:id', 'check_admin', function($id) {
     QuestionController::show($id);
   });
 
@@ -73,7 +73,7 @@
     OrgController::create();
   });
 
-  $routes->get('/organizations/:id', function($id) {
+  $routes->get('/organizations/:id', 'check_admin', function($id) {
     OrgController::show($id);
   });
 
@@ -81,13 +81,17 @@
     OrgController::edit($id);
   });
 
-  $routes->post('/organization', 'check_admin', function() {
+  $routes->post('/organizations', 'check_admin', function() {
     OrgController::store();
   });
 
+  $routes->post('/organizations/:id/destroy', 'check_admin', function($id) {
+    OrgController::destroy($id);
+  });
 
-
-
+  $routes->post('/organizations/:id/edit', 'check_admin', function($id) {
+    OrgController::update($id);
+  });
 
 
 
@@ -97,26 +101,26 @@
     UsrController::list();
   });
 
-  $routes->get('/users/new', function() {
+  $routes->get('/users/new', 'check_admin', function() {
     UsrController::create();
   });
 
-  $routes->get('/users/:id', function($id) {
+  $routes->get('/users/:id', 'check_admin', function($id) {
     UsrController::show($id);
   });
 
-  $routes->get('/users/:id/edit', function($id) {
+  $routes->get('/users/:id/edit', 'check_admin', function($id) {
     UsrController::edit($id);
   });
 
-  $routes->post('/users', function() {
+  $routes->post('/users', 'check_admin', function() {
     UsrController::store();
   });
 
-  $routes->post('/users/:id/edit', function($id) {
+  $routes->post('/users/:id/edit', 'check_admin', function($id) {
     UsrController::update($id);
   });
 
-  $routes->post('/users/:id/destroy', function($id) {
+  $routes->post('/users/:id/destroy', 'check_admin', function($id) {
     UsrController::destroy($id);
   });

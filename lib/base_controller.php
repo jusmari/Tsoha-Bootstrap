@@ -10,7 +10,7 @@
         return $user;
       }
 
-      return null;
+      return NULL;
     }
 
     public static function check_logged_in(){
@@ -22,8 +22,8 @@
     public static function check_user_admin() {
       $usr = self::get_user_logged_in();
 
-      if ($usr->admin != TRUE) {
-          Redirect::to('/login', array('error' => 'You must be logged as admin to access this page'));
+      if ($usr == NULL || $usr->admin != TRUE) {
+          Redirect::to('/login', array('error' => 'You must be logged in as an admin to access this page'));
       }
     }
   }

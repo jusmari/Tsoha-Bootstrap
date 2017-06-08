@@ -52,7 +52,10 @@
     }
 
     public function destroy() {
+      $query = DB::connection()->prepare('DELETE FROM Membership WHERE organization_id = :id;');
+      $query->execute(array('id' => $this->id));
+
       $query = DB::connection()->prepare('DELETE FROM Organization WHERE id = :id;');
-      $query->execute(array('id' => $id));
+      $query->execute(array('id' => $this->id));
     }
   }

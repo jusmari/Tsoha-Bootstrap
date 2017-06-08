@@ -140,7 +140,7 @@
       }else{
         $_SESSION['user'] = $user->id;
 
-        Redirect::to('/lobby', array('message' => 'Tervetuloa takaisin ' . $user->name . '!'));
+        Redirect::to('/lobby', array('message' => 'Tervetuloa, ' . $user->name . '!'));
       }
     }
   }
