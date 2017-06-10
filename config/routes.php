@@ -29,6 +29,17 @@
     UsrController::lobby();
   });
 
+  // ANSWERS
+
+  $routes->get('/quiz', 'check_logged_in', function() {
+    AnswerController::quiz();
+  });
+
+  $routes->post('/quiz', 'check_logged_in', function() {
+    AnswerController::answerQuiz();
+  });
+
+
 
 
   // QUESTIONS

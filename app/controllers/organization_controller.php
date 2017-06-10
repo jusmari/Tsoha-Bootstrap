@@ -5,8 +5,9 @@
     public static function list() {
       $orgs = Organization::all();
       $members = Membership::getAllOrgsMemberCount();
+      $user = self::get_user_logged_in();
 
-      View::make('organization/list.html', array('orgs' => $orgs, 'members' => $members));
+      View::make('organization/list.html', array('orgs' => $orgs, 'members' => $members, 'user_logged_in' => $user));
     }
 
     public static function show($id) {

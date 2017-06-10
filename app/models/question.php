@@ -69,6 +69,25 @@
       return $questions;
     }
 
+    public static function allWithPossibleAnswersExploded(){
+      $query = DB::connection()->prepare('SELECT * FROM Question');
+      $query->execute();
+      $rows = $query->fetchAll();
+      $questions = array();
+
+      foreach($rows as $row){
+        $questions[] = new Question(array(
+          'id' => $row['id'],
+          'name' => $row['name'],
+          'body' => $row['body'],
+          'correctAnswer' => $row['correctanswer'],
+          'possibleAnswers' => explode(";", $row['possibleanswers'])
+        ));
+      }
+
+      return $questions;
+    }
+
     public static function find($id) {
       $query = DB::connection()->prepare('SELECT * FROM Question WHERE id = :id LIMIT 1');
       $query->execute(array('id' => $id));

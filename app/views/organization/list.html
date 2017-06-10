@@ -8,7 +8,7 @@
 
   <h1>Järjestölista</h1>
 
-  {% if user_logged_in.admin == TRUE %}
+  {% if user_logged_in.admin %}
   <p>
     <a href="{{base_path}}/organizations/new" class="btn btn-success">Lisää järjestö --vain adminille</a>
   </p>

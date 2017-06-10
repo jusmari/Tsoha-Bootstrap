@@ -1,6 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
-  
+  <div id="questionContainer">
+    <h1>Tämä on kysymyssivu</h1>
+
+    {% for q in questions %}
+      <div class="questionRow">
+        <h3>{{q.name}}</h3>
+        <p>{{q.body}}</p>
+
+        <strong>Vastauksesi: </strong>
+        <form method="post" action="{{base_path}}/quiz">
+          <div class="form-group">
+            {% for a in possibleAnswers %}
+            <div class="radio">
+              <label class="radio-inline"><input type="radio" name="ans" value="{{a}}"/>{{a}}</label>
+            </div>
+            {% endfor %}
+            <input type="hidden" value="{{q.id}}" />
+          </div>
+        </form>
+      </div>
+    {% endfor %}
+  </div>
 
 {% endblock %}
