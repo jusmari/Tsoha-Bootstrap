@@ -5,12 +5,12 @@
 
     public static function quiz() {
       $questions = Question::all();
-      $user_id = self::get_user_logged_in();
 
-      View::make('quiz.html', array('questions' => $questions, 'user_logged_in' => $user_id));
+      View::make('quiz.html', array('questions' => $questions));
     }
 
     public static function answerQuiz() {
+      $user_id = self::get_user_logged_in();
       $params = $_POST;
 
       

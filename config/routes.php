@@ -21,7 +21,7 @@
     UsrController::login();
   });
 
-  $routes->post('/logout', function() {
+  $routes->post('/logout', 'check_logged_in', function() {
     UsrController::logout();
   });
 
@@ -63,11 +63,11 @@
     QuestionController::edit($id);
   });
 
-  $routes->post('/questions/:id/edit', 'check_admin', function($id) {
+  $routes->put('/questions/:id/edit', 'check_admin', function($id) {
     QuestionController::update($id);
   });
 
-  $routes->post('/questions/:id/destroy', 'check_admin', function($id) {
+  $routes->delete('/questions/:id/destroy', 'check_admin', function($id) {
     QuestionController::destroy($id);
   });
 
@@ -96,11 +96,11 @@
     OrgController::store();
   });
 
-  $routes->post('/organizations/:id/destroy', 'check_admin', function($id) {
+  $routes->delete('/organizations/:id/destroy', 'check_admin', function($id) {
     OrgController::destroy($id);
   });
 
-  $routes->post('/organizations/:id/edit', 'check_admin', function($id) {
+  $routes->put('/organizations/:id/edit', 'check_admin', function($id) {
     OrgController::update($id);
   });
 
@@ -128,10 +128,10 @@
     UsrController::store();
   });
 
-  $routes->post('/users/:id/edit', 'check_admin', function($id) {
+  $routes->put('/users/:id/edit', 'check_admin', function($id) {
     UsrController::update($id);
   });
 
-  $routes->post('/users/:id/destroy', 'check_admin', function($id) {
+  $routes->delete('/users/:id/destroy', 'check_admin', function($id) {
     UsrController::destroy($id);
   });

@@ -15,7 +15,10 @@
   {% endfor %}
 
   <p>
-    <button class="btn btn-danger">Poista</button> <a href="{{base_path}}/users/{{user.id}}/edit" class="btn btn-default">Muokkaa</a>
+    <form method="DELETE" action="{{base_path}}/users/{{u.id}}/destroy" style="display: inline-block;">
+      <button type="submit" class="btn btn-danger">Poista</button>
+    </form>
+    <a href="{{base_path}}/users/{{user.id}}/edit" class="btn btn-default">Muokkaa</a>
   </p>
 
 {% endblock %}
