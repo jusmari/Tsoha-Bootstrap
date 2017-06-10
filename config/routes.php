@@ -9,6 +9,10 @@
     BaseController::check_user_admin();
   }
 
+
+
+  // MISC-----------------------------------------------------
+
   $routes->get('/', function() {
     UsrController::index();
   });
@@ -29,7 +33,17 @@
     UsrController::lobby();
   });
 
-  // ANSWERS
+  $routes->get('/register', function() {
+    UsrController::create();
+  });
+
+
+
+
+
+
+
+  // ANSWERS-----------------------------------------------------
 
   $routes->get('/quiz', 'check_logged_in', function() {
     AnswerController::quiz();
@@ -42,7 +56,9 @@
 
 
 
-  // QUESTIONS
+
+  // QUESTIONS-----------------------------------------------------
+
   $routes->get('/questions', function() {
     QuestionController::list();
   });
@@ -63,11 +79,11 @@
     QuestionController::edit($id);
   });
 
-  $routes->put('/questions/:id/edit', 'check_admin', function($id) {
+  $routes->put('/questions/:id', 'check_admin', function($id) {
     QuestionController::update($id);
   });
 
-  $routes->delete('/questions/:id/destroy', 'check_admin', function($id) {
+  $routes->delete('/questions/:id', 'check_admin', function($id) {
     QuestionController::destroy($id);
   });
 
@@ -75,7 +91,7 @@
 
 
 
-  // ORGANIZATIONS
+  // ORGANIZATIONS -----------------------------------------------------
   $routes->get('/organizations', function() {
     OrgController::list();
   });
@@ -96,24 +112,22 @@
     OrgController::store();
   });
 
-  $routes->delete('/organizations/:id/destroy', 'check_admin', function($id) {
+  $routes->delete('/organizations/:id', 'check_admin', function($id) {
     OrgController::destroy($id);
   });
 
-  $routes->put('/organizations/:id/edit', 'check_admin', function($id) {
+  $routes->put('/organizations/:id', 'check_admin', function($id) {
     OrgController::update($id);
   });
 
 
 
 
-  // USERS
+  // USERS -----------------------------------------------------
+
+  
   $routes->get('/users', 'check_admin', function() {
     UsrController::list();
-  });
-
-  $routes->get('/users/new', 'check_admin', function() {
-    UsrController::create();
   });
 
   $routes->get('/users/:id', 'check_admin', function($id) {
@@ -128,10 +142,10 @@
     UsrController::store();
   });
 
-  $routes->put('/users/:id/edit', 'check_admin', function($id) {
+  $routes->put('/users/:id', 'check_admin', function($id) {
     UsrController::update($id);
   });
 
-  $routes->delete('/users/:id/destroy', 'check_admin', function($id) {
+  $routes->delete('/users/:id', 'check_admin', function($id) {
     UsrController::destroy($id);
   });
