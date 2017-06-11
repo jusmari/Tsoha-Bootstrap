@@ -18,7 +18,7 @@
   <p>{{q.possibleAnswers}}</p>
 
 
-  <form method="DELETE" action="{{base_path}}/questions/{{q.id}}" style="display: inline-block;">
+  <form method="POST" action="{{base_path}}/questions/{{q.id}}/delete" style="display: inline-block;">
     <button type="submit" class="btn btn-danger">Poista</button>
   </form>
 

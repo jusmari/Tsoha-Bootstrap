@@ -11,7 +11,7 @@
   <h4>Jäseniä: {{m}}</h4>
 
   <p>
-    <form method="DELETE" action="{{base_path}}/organizations/{{q.id}}/destroy" style="display: inline-block;">
+    <form method="POST" action="{{base_path}}/organizations/{{q.id}}/delete" style="display: inline-block;">
       <button type="submit" class="btn btn-danger">Poista</button>
     </form>
     <a href="#" class="btn btn-default">Muokkaa</a>

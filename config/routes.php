@@ -59,7 +59,7 @@
 
   // QUESTIONS-----------------------------------------------------
 
-  $routes->get('/questions', function() {
+  $routes->get('/questions', 'check_admin', function() {
     QuestionController::list();
   });
 
@@ -79,11 +79,11 @@
     QuestionController::edit($id);
   });
 
-  $routes->put('/questions/:id', 'check_admin', function($id) {
+  $routes->post('/questions/:id/edit', 'check_admin', function($id) {
     QuestionController::update($id);
   });
 
-  $routes->delete('/questions/:id', 'check_admin', function($id) {
+  $routes->post('/questions/:id/delete', 'check_admin', function($id) {
     QuestionController::destroy($id);
   });
 
@@ -112,11 +112,11 @@
     OrgController::store();
   });
 
-  $routes->delete('/organizations/:id', 'check_admin', function($id) {
+  $routes->delete('/organizations/:id/delete', 'check_admin', function($id) {
     OrgController::destroy($id);
   });
 
-  $routes->put('/organizations/:id', 'check_admin', function($id) {
+  $routes->post('/organizations/:id/edit', 'check_admin', function($id) {
     OrgController::update($id);
   });
 
@@ -125,27 +125,27 @@
 
   // USERS -----------------------------------------------------
 
-  
+
   $routes->get('/users', 'check_admin', function() {
     UsrController::list();
   });
 
-  $routes->get('/users/:id', 'check_admin', function($id) {
+  $routes->get('/users/:id', 'check_logged_in', function($id) {
     UsrController::show($id);
   });
 
-  $routes->get('/users/:id/edit', 'check_admin', function($id) {
+  $routes->get('/users/:id/edit', 'check_logged_in', function($id) {
     UsrController::edit($id);
   });
 
-  $routes->post('/users', 'check_admin', function() {
+  $routes->post('/users', function() {
     UsrController::store();
   });
 
-  $routes->put('/users/:id', 'check_admin', function($id) {
+  $routes->post('/users/:id/edit', 'check_logged_in', function($id) {
     UsrController::update($id);
   });
 
-  $routes->delete('/users/:id', 'check_admin', function($id) {
+  $routes->post('/users/:id/delete', 'check_logged_in', function($id) {
     UsrController::destroy($id);
   });
