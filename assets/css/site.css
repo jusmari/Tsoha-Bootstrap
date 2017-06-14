@@ -5,19 +5,6 @@ body {
   font-size: 1.5rem;
 }
 
-#questionContainer {
-
-}
-
-.questionRow {
-  text-align: left;
-
-}
-
-#questionContainer > div:nth-of-type(even) {
-    background: grey;
-}
-
 .frontPage {
   background:
   linear-gradient(
@@ -78,4 +65,21 @@ body {
 
 form {
   max-width: 600px;
+}
+
+.questionRow {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 5px;
+  word-wrap: break-word;
+}
+
+
+#questionForm {
+  max-width: 1000px;
+}
+
+#questionForm > div.questionRow:nth-of-type(even) {
+    background: #edeeef;
 }

@@ -104,7 +104,7 @@
         'password' => $params['password']
       );
 
-      if ($params['admin']) $attrs['admin'] = TRUE;
+      if (isset($params['admin'])) $attrs['admin'] = TRUE;
 
       $q = new Usr($attrs);
       $errors = $q->errors();

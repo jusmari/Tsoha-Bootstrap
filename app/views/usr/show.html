@@ -6,7 +6,7 @@
     </div>
   {% endif %}
 
-  <h1>{{user.name}}</h1>
+  <h1>{{user.name}} {% if user.admin %}(admin){% endif %}</h1>
 
   <h5>Jäsenyydet:</h5>
 

@@ -4,16 +4,44 @@
 
 
     public static function quiz() {
-      $questions = Question::all();
+      $questions = Question::allWithPossibleAnswersExploded();
 
-      View::make('quiz.html', array('questions' => $questions));
+      View::make('answer/quiz.html', array('questions' => $questions));
     }
 
     public static function answerQuiz() {
-      $user_id = self::get_user_logged_in();
+      $user_id = self::get_user_logged_in()->id;
       $params = $_POST;
+      $questionAmount = count($params);
+      $correctAmount = 0;
 
-      
+      foreach ($params as $key => $value) {
+        $q = Question::find($key);
+        $correctAnswer = $q->correctAnswer;
+        $correct = "f";
+
+        if ($value == $correctAnswer) {
+          $correct = "t";
+          $correctAmount++;
+        }
+
+        $answer = new Answer(array(
+          'question_id' => $key,
+          'usr_id' => $user_id,
+          'correct' => $correct
+        ));
+
+        $answer->save();
+      }
+
+      if ($correctAmount == 0) {
+        Redirect::to('/lobby', array('answerPercentage' => "0??!!"));
+      } else {
+        $answerPercentage = $correctAmount / $questionAmount * 100;
+
+        Redirect::to('/lobby', array('answerPercentage' => $answerPercentage));
+      }
+
     }
 
   }

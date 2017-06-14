@@ -42,9 +42,7 @@
     }
 
     public function save() {
-      $query = DB::connection()->prepare('INSERT INTO Answer (usr_id, question_id, correct) VALUES (:usr_id, :question_id, :correct) RETURNING id');
+      $query = DB::connection()->prepare('INSERT INTO Answer (usr_id, question_id, correct) VALUES (:usr_id, :question_id, :correct);');
       $query->execute(array('usr_id' => $this->usr_id, 'question_id' => $this->question_id, 'correct' => $this->correct));
-      $row = $query->fetch();
-      $this->id = $row['id'];
     }
   }

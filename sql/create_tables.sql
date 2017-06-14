@@ -22,12 +22,12 @@ CREATE TABLE Organization(
 );
 
 CREATE TABLE Membership(
-  organization_id INTEGER REFERENCES Organization(id),
-  usr_id INTEGER REFERENCES Usr(id)
+  organization_id INTEGER REFERENCES Organization(id) NOT NULL,
+  usr_id INTEGER REFERENCES Usr(id) NOT NULL
 );
 
 CREATE TABLE Answer(
-  usr_id INTEGER REFERENCES Usr(id),
-  question_id INTEGER REFERENCES Question(id),
+  usr_id INTEGER REFERENCES Usr(id) NOT NULL,
+  question_id INTEGER REFERENCES Question(id) NOT NULL,
   correct boolean NOT NULL
 );

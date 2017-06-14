@@ -15,7 +15,7 @@
 
     public static function check_logged_in(){
       if(!isset($_SESSION['user'])) {
-          Redirect::to('/login', array('error' => 'You must be logged in to access this page'));
+          Redirect::to('/login', array('error' => 'You must be logged in to access that page'));
       }
     }
 
@@ -23,7 +23,7 @@
       $usr = self::get_user_logged_in();
 
       if ($usr == NULL || $usr->admin != TRUE) {
-          Redirect::to('/login', array('error' => 'You must be logged in as an admin to access this page'));
+          Redirect::to('/login', array('error' => 'You must be logged in as an admin to access that page'));
       }
     }
   }

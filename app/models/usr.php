@@ -73,7 +73,7 @@
       $this->id = $row['id'];
     }
 
-    public function update($id) {
+    public function update() {
       $query = DB::connection()->prepare('UPDATE Usr SET name = :name, password = :password, admin = :admin WHERE id = :id;');
 
       $query->execute(array('id' => $this->id, 'name' => $this->name, 'password' => $this->password, 'admin' => $this->admin));

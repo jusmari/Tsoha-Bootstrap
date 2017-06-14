@@ -6,23 +6,23 @@
 </div>
 {% endif %}
 
-  <div>
-      <h3>Kirjaudu sisään</h3>
-      <!-- Kaikki lomakkeen elementit form-tagin sisään -->
-      <form>
-        <!-- Tekstikenttä käyttäjätunnukselle -->
-        <div class="form-group">
-          <label>Käyttäjätunnus</label>
-          <input type="text" class="form-control">
-        </div>
+<div>
+    <h3>Kirjaudu sisään</h3>
+    <!-- Kaikki lomakkeen elementit form-tagin sisään -->
+    <form action="{{base_path}}/login" method="post">
+      <!-- Tekstikenttä käyttäjätunnukselle -->
+      <div class="form-group">
+        <label>Käyttäjätunnus</label>
+        <input type="text" name="username" value="{{user.username}}" class="form-control">
+      </div>
 
-        <!-- Salasanakenttä salasanalle -->
-        <div class="form-group">
-          <label>Salasana</label>
-          <input type="password" class="form-control">
-        </div>
+      <!-- Salasanakenttä salasanalle -->
+      <div class="form-group">
+        <label>Salasana</label>
+        <input type="password" name="password" class="form-control">
+      </div>
 
-        <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
-      </form>
-  </div>
+      <button type="submit" class="btn btn-success">Kirjaudu sisään</button>
+    </form>
+</div>
 {% endblock %}

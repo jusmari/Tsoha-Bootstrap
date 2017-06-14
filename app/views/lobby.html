@@ -10,9 +10,19 @@
   <div>
     <h1>Teoriakokeen tutkailusivu</h1>
 
+    {% if (answerPercentage) %}
+      <div id="results">
+        <p>
+          Vastasit oikein {{answerPercentage}} % tarkkuudella!
+        </p>
+      </div>
+    {% endif %}
+
     <p>Tässä välissä hieman statistiikkaa</p>
 
-    <button type="button" class="btn btn-primary btn-lg" href="{{base_path}}/quiz">Kokeeseen</button>
+    <a href="{{base_path}}/quiz">
+      <button type="button" class="btn btn-primary btn-lg" >Kokeeseen</button>
+    </a>
   </div>
 
 {% endblock %}
