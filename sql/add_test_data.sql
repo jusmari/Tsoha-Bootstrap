@@ -1,8 +1,8 @@
 -- Lisää INSERT INTO lauseet tähän tiedostoon
 
 
-INSERT INTO Usr (name, password, admin) VALUES ('admin', 'admin', true);
-INSERT INTO Usr (name, password, admin) VALUES ('testi', 'testi', false);
+INSERT INTO Usr (name, password, admin) VALUES ('testi1', 'testi1', false);
+
 
 INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('testikysymys', 'onko meillä kivaa', 'kyllä', 'kyllä;ei');
 INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('toinenTestikysymys', 'kikkeliskokkelis???', 'kyllä', 'kyllä;ei');
@@ -10,6 +10,17 @@ INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('toine
 
 INSERT INTO Organization (name) VALUES ('Matlu');
 INSERT INTO Organization (name) VALUES ('Tekis');
+INSERT INTO Organization (name) VALUES ('MaO');
+INSERT INTO Organization (name) VALUES ('Geysir');
+INSERT INTO Organization (name) VALUES ('Matrix');
+INSERT INTO Organization (name) VALUES ('Resonanssi');
+INSERT INTO Organization (name) VALUES ('HYK');
+INSERT INTO Organization (name) VALUES ('Synop');
+INSERT INTO Organization (name) VALUES ('Vasara');
+INSERT INTO Organization (name) VALUES ('Moodi');
+INSERT INTO Organization (name) VALUES ('Meridiaani');
+INSERT INTO Organization (name) VALUES ('Spektrum');
+INSERT INTO Organization (name) VALUES ('Limes');
 
 INSERT INTO Membership (organization_id, usr_id) VALUES (1, 1);
 INSERT INTO Membership (organization_id, usr_id) VALUES (1, 2);

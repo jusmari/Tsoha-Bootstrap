@@ -8,17 +8,40 @@
   {% endif %}
 
   <div>
-    <h1>Teoriakokeen tutkailusivu</h1>
 
-    {% if (answerPercentage) %}
-      <div id="results">
+    {% if (stats) %}
+    <div id="results">
+      <h2>
+        Olet vastannut kysymyksiin seuraavasti:
+      </h2>
+
+      <p>
+        Yhteensä {{percentage}}% vastauksista on oikein.
+      </p>
+
+      {% for s in stats %}
+        <h3>{{s.name}}</h3>
         <p>
-          Vastasit oikein {{answerPercentage}} % tarkkuudella!
+          {{s.body}}
         </p>
-      </div>
-    {% endif %}
+        <strong>
+          {% if s.correct %}
+           Oikein!
+          {% else %}
+           Väärin :(
+          {% endif %}
+        </strong>
+      {% endfor %}
 
-    <p>Tässä välissä hieman statistiikkaa</p>
+      {% else %}
+        <p>
+          Et ole vastannut vielä kysymyksiin, siirry tekemään koetta!
+        </p>
+      {% endif %}
+
+    </div>
+
+    <br />
 
     <a href="{{base_path}}/quiz">
       <button type="button" class="btn btn-primary btn-lg" >Kokeeseen</button>

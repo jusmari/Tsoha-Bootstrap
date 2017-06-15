@@ -25,6 +25,27 @@
       return $answs;
     }
 
+    public static function deleteAnswersFromUser($id) {
+      $query = DB::connection()->prepare('DELETE FROM answer WHERE usr_id = :id ;');
+      $query->execute(array('id' => $id));
+    }
+
+    public static function getAllUserAnswers($id) {
+      $query = DB::connection()->prepare('SELECT name, body, correct FROM question AS q LEFT JOIN answer AS a ON a.question_id = q.id WHERE a.usr_id = :id ;');
+      $query->execute(array('id' => $id));
+      $rows = $query->fetchAll();
+
+      return $rows;
+    }
+
+    public static function getUserAnswerPercentage($id) {
+      $query = DB::connection()->prepare('SELECT CAST((SELECT COUNT(*) FROM answer WHERE usr_id = :id AND correct = true) AS FLOAT) / (SELECT count(*) FROM question) * 100 AS res;');
+      $query->execute(array('id' => $id));
+      $rows = $query->fetch();
+
+      return $rows;
+    }
+
     public static function find($usr_id, $q_id) {
       $query = DB::connection()->prepare('SELECT * FROM Answer WHERE usr_id = :u_id AND question_id = :q_id LIMIT 1');
       $query->execute(array('u_id' => $usr_id, 'q_id' => $q_id));

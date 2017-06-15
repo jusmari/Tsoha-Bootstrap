@@ -14,7 +14,7 @@
       $v = $this->name;
 
       if($this->validateNotEmpty($v)) $errors[] = "Nimi ei saa olla tyhjä!";
-      if($this->validateStringLengthMoreThan($v, 5)) $errors[] = "Nimen tulee olla yli viisi merkkiä pitkä!";
+      if($this->validateStringLengthMoreThan($v, 3)) $errors[] = "Nimen tulee olla yli viisi merkkiä pitkä!";
       if($this->validateStringLengthLessThan($v, 50)) $errors[] = "Nimen tulee olla alle 50 merkkiä pitkä!";
 
       return $errors;
@@ -25,8 +25,8 @@
       $v = $this->password;
 
       if($this->validateNotEmpty($v)) $errors[] = "Salasana ei saa olla tyhjä!";
-      if($this->validateStringLengthMoreThan($v, 5)) $errors[] = "Salasanan tulee olla yli viisi merkkiä pitkä!";
-      if($this->validateStringLengthLessThan($v, 50)) $errors[] = "Salasanan tulee olla alle 50 merkkiä pitkä!";
+      if($this->validateStringLengthMoreThan($v, 3)) $errors[] = "Salasanan tulee olla yli viisi merkkiä pitkä!";
+      if($this->validateStringLengthLessThan($v, 200)) $errors[] = "Salasanan tulee olla alle 50 merkkiä pitkä!";
 
       return $errors;
     }
@@ -67,6 +67,8 @@
     }
 
     public function save() {
+      $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+
       $query = DB::connection()->prepare('INSERT INTO Usr (name, password, admin) VALUES (:name, :password, :admin) RETURNING id');
       $query->execute(array('name' => $this->name, 'password' => $this->password, 'admin' => $this->admin));
       $row = $query->fetch();
@@ -74,6 +76,8 @@
     }
 
     public function update() {
+      $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+
       $query = DB::connection()->prepare('UPDATE Usr SET name = :name, password = :password, admin = :admin WHERE id = :id;');
 
       $query->execute(array('id' => $this->id, 'name' => $this->name, 'password' => $this->password, 'admin' => $this->admin));
@@ -90,12 +94,14 @@
       $query->execute(array('id' => $id));
     }
 
-    public static function authenticate($name, $pw) {
-      $query = DB::connection()->prepare('SELECT * FROM Usr WHERE name = :name AND password = :password LIMIT 1');
-      $query->execute(array('name' => $name, 'password' => $pw));
+    public static function authenticate($name, $no_hash_pw) {
+
+
+      $query = DB::connection()->prepare('SELECT * FROM Usr WHERE name = :name LIMIT 1');
+      $query->execute(array('name' => $name));
       $row = $query->fetch();
 
-      if($row){
+      if($row && password_verify($no_hash_pw, $row['password'])){
         return new Usr(array(
           'id' => $row['id'],
           'name' => $row['name'],
@@ -105,5 +111,13 @@
       }else{
         return null;
       }
+    }
+
+    public static function checkUniqueUsername($check) {
+      $query = DB::connection()->prepare('SELECT name FROM Usr WHERE name = :name LIMIT 1');
+      $query->execute(array('name' => $check));
+      $row = $query->fetch();
+
+      return ($row['name'] == $check) ? TRUE : FALSE;
     }
   }

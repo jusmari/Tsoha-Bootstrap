@@ -15,6 +15,8 @@
       $questionAmount = count($params);
       $correctAmount = 0;
 
+      Answer::deleteAnswersFromUser($user_id);
+
       foreach ($params as $key => $value) {
         $q = Question::find($key);
         $correctAnswer = $q->correctAnswer;
@@ -35,11 +37,11 @@
       }
 
       if ($correctAmount == 0) {
-        Redirect::to('/lobby', array('answerPercentage' => "0??!!"));
+        Redirect::to('/lobby', array('message' => "Vastasit oikein 0??!!% tarkkuudella!"));
       } else {
         $answerPercentage = $correctAmount / $questionAmount * 100;
 
-        Redirect::to('/lobby', array('answerPercentage' => $answerPercentage));
+        Redirect::to('/lobby', array('message' => "Vastasit oikein " . $answerPercentage . " % tarkkuudella!"));
       }
 
     }

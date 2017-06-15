@@ -9,7 +9,13 @@
     }
 
     public static function lobby() {
-      View::make('lobby.html');
+      $id = self::get_user_logged_in()->id;
+      $user_answers = Answer::getAllUserAnswers($id);
+      if (count($user_answers) == 0) $user_answers = NULL;
+
+      $ans_percentage = Answer::getUserAnswerPercentage($id)['res'];
+
+      View::make('lobby.html', array('stats' => $user_answers, 'percentage' => $ans_percentage));
     }
 
     public static function login(){
@@ -71,8 +77,9 @@
 
     public static function store(){
       $params = $_POST;
+
       $attributes = array(
-        'name' => $params['name'],
+        'name' => $params['username'],
         'password' => $params['password']
       );
 
@@ -84,12 +91,16 @@
         $errors[] = "Antamasi salasanat eivät täsmää";
       }
 
+      if (Usr::checkUniqueUsername($params['username'])) {
+        $errors[] = "Käyttäjänimi on jo käytössä!";
+      }
+
       if (count($errors) == 0) {
         $usr->save();
 
         self::createMemberships($params, $usr->id);
 
-        Redirect::to('/users/' . $usr->id, array('message' => 'Uuden käyttäjän luonti onnistui!'));
+        self::handle_login();
       } else {
         self::create($attributes, $errors);
       }
