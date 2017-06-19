@@ -1,11 +1,26 @@
 -- Lisää INSERT INTO lauseet tähän tiedostoon
 
 
-INSERT INTO Usr (name, password, admin) VALUES ('testi1', 'testi1', false);
+INSERT INTO Usr (name, password, admin, email) VALUES ('testi1', 'testi1', false, 'testi1@testi.com');
+INSERT INTO Usr (name, password, admin, email) VALUES ('testi2', 'testi1', false, 'testi2@testi.com');
+INSERT INTO Usr (name, password, admin, email) VALUES ('testi3', 'testi1', false, 'testi3@testi.com');
 
 
 INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('testikysymys', 'onko meillä kivaa', 'kyllä', 'kyllä;ei');
-INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('toinenTestikysymys', 'kikkeliskokkelis???', 'kyllä', 'kyllä;ei');
+INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('Peruskysymys', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis metus et augue fermentum accumsan non eget mi. Integer hendrerit ligula justo, at congue eros consectetur quis.', 'kyllä', 'kyllä;ei');
+INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('Peruskysymys', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis metus et augue fermentum accumsan non eget mi. Integer hendrerit ligula justo, at congue eros consectetur quis.', 'kyllä', 'kyllä;ei');
+INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('Peruskysymys', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis metus et augue fermentum accumsan non eget mi. Integer hendrerit ligula justo, at congue eros consectetur quis.', 'kyllä', 'kyllä;ei');
+INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('Peruskysymys', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis metus et augue fermentum accumsan non eget mi. Integer hendrerit ligula justo, at congue eros consectetur quis.', 'kyllä', 'kyllä;ei');
+INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('Peruskysymys', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis metus et augue fermentum accumsan non eget mi. Integer hendrerit ligula justo, at congue eros consectetur quis.', 'kyllä', 'kyllä;ei');
+INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('Peruskysymys', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis metus et augue fermentum accumsan non eget mi. Integer hendrerit ligula justo, at congue eros consectetur quis.', 'kyllä', 'kyllä;ei');
+INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('Peruskysymys', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis metus et augue fermentum accumsan non eget mi. Integer hendrerit ligula justo, at congue eros consectetur quis.', 'kyllä', 'kyllä;ei');
+INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('Peruskysymys', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis metus et augue fermentum accumsan non eget mi. Integer hendrerit ligula justo, at congue eros consectetur quis.', 'kyllä', 'kyllä;ei');
+INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('Peruskysymys', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis metus et augue fermentum accumsan non eget mi. Integer hendrerit ligula justo, at congue eros consectetur quis.', 'kyllä', 'kyllä;ei');
+INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('Peruskysymys', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis metus et augue fermentum accumsan non eget mi. Integer hendrerit ligula justo, at congue eros consectetur quis.', 'kyllä', 'kyllä;ei');
+INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('Peruskysymys', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis metus et augue fermentum accumsan non eget mi. Integer hendrerit ligula justo, at congue eros consectetur quis.', 'kyllä', 'kyllä;ei');
+INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('Peruskysymys', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis metus et augue fermentum accumsan non eget mi. Integer hendrerit ligula justo, at congue eros consectetur quis.', 'kyllä', 'kyllä;ei');
+INSERT INTO Question (name, body, correctAnswer, possibleAnswers) VALUES ('Peruskysymys', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis metus et augue fermentum accumsan non eget mi. Integer hendrerit ligula justo, at congue eros consectetur quis.', 'kyllä', 'kyllä;ei');
+
 
 
 INSERT INTO Organization (name) VALUES ('Matlu');

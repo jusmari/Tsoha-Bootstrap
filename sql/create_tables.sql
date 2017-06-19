@@ -5,13 +5,14 @@ CREATE TABLE Usr(
   id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
   password varchar(200) NOT NULL,
+  email varchar(200) NOT NULL UNIQUE,
   admin boolean default false
 );
 
 CREATE TABLE Question(
   id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
-  body varchar(140) NOT NULL,
+  body varchar(300) NOT NULL,
   correctAnswer varchar(140) NOT NULL,
   possibleAnswers varchar(200) NOT NULL
 );

@@ -8,16 +8,19 @@
 
   <h1>{{user.name}} {% if user.admin %}(admin){% endif %}</h1>
 
-  <h5>Jäsenyydet:</h5>
+  <p>
+    Sähköposti: {{user.email}}
+  </p>
 
-  {% for m in ms %}
-    <p>{{m}}</p>
-  {% endfor %}
 
   <p>
-    <form method="POST" action="{{base_path}}/users/{{u.id}}/delete" style="display: inline-block;">
-      <button type="submit" class="btn btn-danger">Poista</button>
-    </form>
+    <h5>Jäsenyydet:</h5>
+    {% for m in ms %}
+    {{m}}
+    {% endfor %}
+  </p>
+  <p>
+
     <a href="{{base_path}}/users/{{user.id}}/edit" class="btn btn-default">Muokkaa</a>
   </p>
 

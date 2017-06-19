@@ -10,28 +10,36 @@
   <div>
 
     {% if (stats) %}
-    <div id="results">
-      <h2>
-        Olet vastannut kysymyksiin seuraavasti:
-      </h2>
+      <div id="results">
 
-      <p>
-        Yhteensä {{percentage}}% vastauksista on oikein.
-      </p>
-
-      {% for s in stats %}
-        <h3>{{s.name}}</h3>
+        <h2>Kokeen tulokset</h2>
         <p>
-          {{s.body}}
+          Kokeen läpipääsy edellyttää 75% oikeinvastauksia.
         </p>
-        <strong>
-          {% if s.correct %}
-           Oikein!
-          {% else %}
-           Väärin :(
-          {% endif %}
-        </strong>
-      {% endfor %}
+
+        <h3>
+          Olet vastannut kysymyksiin seuraavasti:
+        </h3>
+
+        <p>
+          Yhteensä {{percentage}}% vastauksista on oikein.
+        </p>
+
+        {% for s in stats %}
+        <div class="statRow">
+          <h3>{{s.name}}</h3>
+          <p>
+            {{s.body}}
+          </p>
+          <strong>
+            {% if s.correct %}
+             Oikein!
+            {% else %}
+             Väärin :(
+            {% endif %}
+          </strong>
+        </div>
+        {% endfor %}
 
       {% else %}
         <p>

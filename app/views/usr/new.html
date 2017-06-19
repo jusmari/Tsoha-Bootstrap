@@ -15,14 +15,20 @@
   <form method="post" action="{{base_path}}/users">
     <div class="form-group">
       <label>Nimi</label>
-      <input type="text" name="username" class="form-control" value="{{attrs.name}}" required>
+      <input type="text" name="username" class="form-control" value="{{atrs.username}}" required>
+    </div>
+
+    <div class="form-group">
+      <label>Sähköposti</label>
+      <input type="text" name="email" class="form-control" value="{{atrs.email}}" required>
     </div>
 
     <div class="form-group">
       <label>Valitse järjestö:</label>
       <select name="org" class="form-control" required>
+        <option value="null"></option>
         {% for o in orgs %}
-        <option value="{{o.id}}">{{o.name}}</option>
+        <option value="{{o.id}}" {% if o.id == atrs.org %} selected {% endif %}>{{o.name}}</option>
         {% endfor %}
       </select>
     </div>
@@ -32,7 +38,7 @@
       <select name="org2" class="form-control">
         <option value="null"></option>
         {% for o in orgs %}
-        <option value="{{o.id}}">{{o.name}}</option>
+        <option value="{{o.id}}" {% if o.id == atrs.org2 %} selected {% endif %}>{{o.name}}</option>
         {% endfor %}
       </select>
     </div>

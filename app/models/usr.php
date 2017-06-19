@@ -2,22 +2,31 @@
 
   class Usr extends BaseModel{
 
-    public $id, $name, $password, $admin;
+    public $id, $name, $password, $admin, $email;
 
     public function __construct($attributes){
       parent::__construct($attributes);
-      $this->validators = array('validate_name', 'validate_password');
+      $this->validators = array('validate_name', 'validate_password', 'validate_email');
     }
 
     public function validate_name(){
       $errors = array();
       $v = $this->name;
 
+      if (!preg_match("/^[a-zA-Z ]*$/",$v)) $errors[] = "Vain kirjaimet ja välilyönnit sallittuja!";
       if($this->validateNotEmpty($v)) $errors[] = "Nimi ei saa olla tyhjä!";
-      if($this->validateStringLengthMoreThan($v, 3)) $errors[] = "Nimen tulee olla yli viisi merkkiä pitkä!";
+      if($this->validateStringLengthMoreThan($v, 3)) $errors[] = "Nimen tulee olla yli kolme merkkiä pitkä!";
       if($this->validateStringLengthLessThan($v, 50)) $errors[] = "Nimen tulee olla alle 50 merkkiä pitkä!";
 
       return $errors;
+    }
+
+    public function validate_email() {
+      $errors = array();
+
+      if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) $errors[] = "Sähköpostiosoite on väärässä muodossa!";
+
+      return $errors;;
     }
 
     public function validate_password() {
@@ -25,7 +34,7 @@
       $v = $this->password;
 
       if($this->validateNotEmpty($v)) $errors[] = "Salasana ei saa olla tyhjä!";
-      if($this->validateStringLengthMoreThan($v, 3)) $errors[] = "Salasanan tulee olla yli viisi merkkiä pitkä!";
+      if($this->validateStringLengthMoreThan($v, 3)) $errors[] = "Salasanan tulee olla yli kolme merkkiä pitkä!";
       if($this->validateStringLengthLessThan($v, 200)) $errors[] = "Salasanan tulee olla alle 50 merkkiä pitkä!";
 
       return $errors;
@@ -42,7 +51,8 @@
           'id' => $row['id'],
           'name' => $row['name'],
           'password' => $row['password'],
-          'admin' => $row['admin']
+          'admin' => $row['admin'],
+          'email' => $row['email']
         ));
       }
 
@@ -59,7 +69,8 @@
           'id' => $row['id'],
           'name' => $row['name'],
           'password' => $row['password'],
-          'admin' => $row['admin']
+          'admin' => $row['admin'],
+          'email' => $row['email']
         ));
       }
 
@@ -69,18 +80,20 @@
     public function save() {
       $this->password = password_hash($this->password, PASSWORD_DEFAULT);
 
-      $query = DB::connection()->prepare('INSERT INTO Usr (name, password, admin) VALUES (:name, :password, :admin) RETURNING id');
-      $query->execute(array('name' => $this->name, 'password' => $this->password, 'admin' => $this->admin));
+      $query = DB::connection()->prepare('INSERT INTO Usr (name, password, admin, email) VALUES (:name, :password, :admin, :email) RETURNING id');
+      $query->execute(array('name' => $this->name, 'password' => $this->password, 'admin' => $this->admin, 'email' => $this->email));
       $row = $query->fetch();
       $this->id = $row['id'];
     }
 
-    public function update() {
-      $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+    public function update($pwChanged) {
+      if ($pwChanged) {
+        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+      }
 
-      $query = DB::connection()->prepare('UPDATE Usr SET name = :name, password = :password, admin = :admin WHERE id = :id;');
+      $query = DB::connection()->prepare('UPDATE Usr SET name = :name, password = :password, admin = :admin, email = :email WHERE id = :id;');
 
-      $query->execute(array('id' => $this->id, 'name' => $this->name, 'password' => $this->password, 'admin' => $this->admin));
+      $query->execute(array('id' => $this->id, 'name' => $this->name, 'password' => $this->password, 'admin' => $this->admin, 'email' => $this->email));
     }
 
     public function destroy($id) {
@@ -106,7 +119,8 @@
           'id' => $row['id'],
           'name' => $row['name'],
           'password' => $row['password'],
-          'admin' => $row['admin']
+          'admin' => $row['admin'],
+          'email' => $row['email']
         ));
       }else{
         return null;

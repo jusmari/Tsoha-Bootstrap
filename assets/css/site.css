@@ -87,3 +87,11 @@ form {
 #questionForm > div.questionRow:nth-of-type(even) {
     background: #edeeef;
 }
+
+#results > div:nth-of-type(odd) {
+    background: #edeeef;
+}
+
+.statRow{
+  padding: 10px;
+}

@@ -13,9 +13,9 @@
       $user_answers = Answer::getAllUserAnswers($id);
       if (count($user_answers) == 0) $user_answers = NULL;
 
-      $ans_percentage = Answer::getUserAnswerPercentage($id)['res'];
+      $ans_percentage = Answer::getUserAnswerPercentage($id);
 
-      View::make('lobby.html', array('stats' => $user_answers, 'percentage' => $ans_percentage));
+      View::make('lobby.html', array('stats' => $user_answers, 'percentage' => round($ans_percentage)));
     }
 
     public static function login(){
@@ -43,18 +43,18 @@
     public static function edit($id) {
       $usr = Usr::find($id);
       $orgs = Organization::all();
+      $memberships = Membership::getAllUserMembershipOrganizations($id);
+      $org = $memberships[0];
+      $org2 = null;
+      if (isset($memberships[1])) $org2 = $memberships[1];
 
-      View::make('usr/edit.html', array('user' => $usr, 'orgs' => $orgs));
+      View::make('usr/edit.html', array('user' => $usr, 'orgs' => $orgs, 'org' => $org, 'org2' => $org2));
     }
 
-    public static function create($attrs = false, $errors = false) {
+    public static function create() {
       $orgs = Organization::all();
 
-      if($attrs) {
-        View::make('usr/new.html', array('orgs' => $orgs, 'attrs' => $attrs, 'errors' => $errors));
-      } else {
-        View::make('usr/new.html', array('orgs' => $orgs));
-      }
+      View::make('usr/new.html', array('orgs' => $orgs));
     }
 
     private static function createMemberships($params, $u_id) {
@@ -80,7 +80,8 @@
 
       $attributes = array(
         'name' => $params['username'],
-        'password' => $params['password']
+        'password' => $params['password'],
+        'email' => $params['email']
       );
 
       $usr = new Usr($attributes);
@@ -102,35 +103,45 @@
 
         self::handle_login();
       } else {
-        self::create($attributes, $errors);
+
+        Redirect::to('/register', array('errors' => $errors, 'atrs' => $params));
       }
     }
 
     public static function update($id) {
       $params = $_POST;
+      $oldUser = Usr::find($id);
+      $passwordChanged = FALSE;
 
-      $attrs = array(
-        'id' => $id,
-        'name' => $params['name'],
-        'password' => $params['password']
-      );
+      $oldUser->name = $params['name'];
 
-      if (isset($params['admin'])) $attrs['admin'] = TRUE;
+      if (!$oldUser->admin) {
+        $oldUser->admin = (isset($params['admin'])) ? TRUE : 'f';
+      }
 
-      $q = new Usr($attrs);
-      $errors = $q->errors();
+      $errors = $oldUser->errors();
+
+      if ($params['password'] !== '') {
+        $oldUser->password = $params['password'];
+        $passwordChanged = TRUE;
+
+        if ($params['password'] !== $params['passwordConfirmation']) {
+          $errors[] = "Salasanat eivät täsmää";
+        }
+      }
 
       if (count($errors) == 0) {
-        $q->update();
+        $oldUser->update($passwordChanged);
 
         Membership::deleteMembershipsFromUser($id);
         self::createMemberships($params, $id);
 
-        Redirect::to('/users/' . $q->id, array('message' => "Käyttäjän tiedot on päivitetty onnistuneesti!"));
+        Redirect::to('/users/' . $oldUser->id, array('message' => "Käyttäjän tiedot on päivitetty onnistuneesti!"));
       } else {
         $orgs = Organization::all();
+        $memberships = array($params['org'], $params['org2']);
 
-        View::make('usr/edit.html', array('errors' => $errors, 'user' => $q, 'orgs' => $orgs));
+        View::make('usr/edit.html', array('errors' => $errors, 'user' => $oldUser, 'orgs' => $orgs, 'memberships' => $memberships));
       }
     }
 

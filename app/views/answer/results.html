@@ -1,23 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-  <div id="questionContainer">
-    <h1>Tämä on kysymyssivu</h1>
+  <div id="resultPage">
+    <h1>Käyttäjät ja heidän tuloksensa</h1>
 
-      {% for q in questions %}
-        <div class="questionRow">
-          <h3>{{q.name}}</h3>
-          <p>{{q.body}}</p>
-
-          <strong>Vastauksesi: </strong>
-            <div class="form-group radio">
-              {% for a in q.possibleAnswers %}
-                <label><input type="radio" name="ans" value="{{a}}"/>{{a}}</label>
-              {% endfor %}
-              <input type="hidden" name="question_id" value="{{q.id}}" />
-            </div>
-        </div>
+    <h3>Läpi päässeiden käyttäjien sähköpostit</h3>
+    <p class="passedUsers">
+      {% for u in passedUsers %}
+        {{u.email}}
       {% endfor %}
+    </p>
+
+    <h3>Ei läpässeiden käyttäjien sähköpostit</h3>
+    <p class="failedUsers">
+      {% for u in failedUsers %}
+        {{u.email}}
+      {% endfor %}
+    </p>
 
   </div>
 

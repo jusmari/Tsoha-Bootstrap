@@ -25,7 +25,7 @@
       $v = $this->body;
 
       if($this->validateNotEmpty($v)) $errors[] = "Kysymysosuus ei saa olla tyhjä!";
-      if($this->validateStringLengthLessThan($v, 140)) $errors[] = "Kysymysosuus tulee olla alle 140 merkkiä pitkä!";
+      if($this->validateStringLengthLessThan($v, 300)) $errors[] = "Kysymysosuus tulee olla alle 140 merkkiä pitkä!";
 
       return $errors;
     }

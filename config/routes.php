@@ -25,7 +25,7 @@
     UsrController::login();
   });
 
-  $routes->post('/logout', 'check_logged_in', function() {
+  $routes->post('/logout', function() {
     UsrController::logout();
   });
 
@@ -53,7 +53,9 @@
     AnswerController::answerQuiz();
   });
 
-
+  $routes->get('/results', 'check_admin', function() {
+    AnswerController::results();
+  });
 
 
 

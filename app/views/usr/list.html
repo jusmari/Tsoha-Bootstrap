@@ -8,14 +8,11 @@
 
   <h1>Käyttäjälista</h1>
 
-  <p>
-    <a href="{{base_path}}/register" class="btn btn-success">Lisää käyttäjä</a>
-  </p>
-
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
         <th>Nimi</th>
+        <th>Sähköposti</th>
         <th></th>
       </tr>
     </thead>
@@ -24,6 +21,7 @@
       {% for u in users %}
       <tr>
         <td><a href="{{base_path}}/users/{{u.id}}">{{u.name}}</a></td>
+        <td>{{u.email}}  </td>
         <th>
           <a class="btn btn-default btn-sm" href="{{base_path}}/users/{{u.id}}/edit">Muokkaa</a>
           <form method="POST" action="{{base_path}}/users/{{u.id}}/delete" style="display: inline-block;">

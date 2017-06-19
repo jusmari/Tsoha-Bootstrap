@@ -41,9 +41,39 @@
       } else {
         $answerPercentage = $correctAmount / $questionAmount * 100;
 
-        Redirect::to('/lobby', array('message' => "Vastasit oikein " . $answerPercentage . " % tarkkuudella!"));
+        Redirect::to('/lobby', array('message' => "Vastasit oikein " . round($answerPercentage, 2) . " % tarkkuudella!"));
       }
 
     }
+
+    public static function results() {
+      $users = Usr::all();
+      $passedUsers = array();
+      $failedUsers = array();
+
+      foreach ($users as $u) {
+        if (round(Answer::getUserAnswerPercentage($u->id)) >= 75) {
+          $passedUsers[] = $u;
+        } else {
+          $failedUsers[] = $u;
+        }
+      }
+
+      View::make('answer/results.html', array('passedUsers' => $passedUsers, 'failedUsers' => $failedUsers));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   }

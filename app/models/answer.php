@@ -39,11 +39,19 @@
     }
 
     public static function getUserAnswerPercentage($id) {
-      $query = DB::connection()->prepare('SELECT CAST((SELECT COUNT(*) FROM answer WHERE usr_id = :id AND correct = true) AS FLOAT) / (SELECT count(*) FROM question) * 100 AS res;');
+      $query = DB::connection()->prepare(
+      'SELECT
+        CAST((SELECT COUNT(*)
+        FROM answer
+        WHERE usr_id = :id AND correct = true) AS FLOAT)
+       /
+        (SELECT count(*)
+        FROM question) * 100
+        AS res;');
       $query->execute(array('id' => $id));
       $rows = $query->fetch();
 
-      return $rows;
+      return $rows['res'];
     }
 
     public static function find($usr_id, $q_id) {
