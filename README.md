@@ -13,9 +13,7 @@ Linkkejä sovellukseen:
 
 Testikäyttäjien tunnukset:
 
-Admin: admin, Admin1
-
-Normaali käyttäjä: testi, Testi1
+admin, Admin1
 
 ## Työn aihe
 
