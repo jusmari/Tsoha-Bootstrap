@@ -11,6 +11,10 @@ Linkkejä sovellukseen:
 * [Järjestöjen listaussivu](https://maot.users.cs.helsinki.fi/tsoha/organizations)
 * [Etusivu (ja kirjautumissivu)](https://maot.users.cs.helsinki.fi/tsoha/)
 
+Testikäyttäjien tunnukset:
+Admin: admin, Admin1
+Normaali käyttäjä: testi, Testi1
+
 ## Työn aihe
 
 Työn aihe on ajokoulun teoriakokeen kaltainen sääntötietämyskoe Kumpulan opiskelijoiden yhteiselle Matlu-klusterille. 
