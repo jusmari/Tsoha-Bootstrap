@@ -12,7 +12,9 @@ Linkkejä sovellukseen:
 * [Etusivu (ja kirjautumissivu)](https://maot.users.cs.helsinki.fi/tsoha/)
 
 Testikäyttäjien tunnukset:
+
 Admin: admin, Admin1
+
 Normaali käyttäjä: testi, Testi1
 
 ## Työn aihe
